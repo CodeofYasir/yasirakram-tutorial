@@ -7,8 +7,12 @@
 	<title>Manage Khata</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 </head>
 <body style="background-image: url('assest/img2.jpg');">
+
 	<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
 	 
 			<form method="post" action="register.php" class="forms border col-lg-5 col-md-7 col-sm-8 col-10 m-auto p-3" >
