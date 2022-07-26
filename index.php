@@ -29,7 +29,7 @@ $result = mysqli_query($db, $query);
 
 <body style="background-image: url('assest/img2.jpg')">
 
-	<div class="col-lg-10 col-md-10 col-10 mt-4 m-auto">
+	<div class="col-lg-10 col-md-10 col-12 mt-4 m-auto">
 		<!-- =============================header======================================= -->
 
 		<div class="d-flex justify-content-between align-items-center">
