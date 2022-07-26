@@ -35,13 +35,15 @@ $result = mysqli_query($db, $query);
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="d-flex justify-content-between align-items-center">
 				<?php  if (isset($_SESSION['username'])) : ?>
-				<h3 class="text-uppercase"><?php echo $_SESSION['username'];?></h3>
-				<p class="mt-3">
+				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
+				<small>
+					<strong>
 					<?php 
 			    $total = ($total_inc+$total_borrow)-($total_investment+$total_lend); 
 				echo "(balance: ".$total.")";
 				?>
-				</p>
+					</strong>
+				</small>
 			</div>
 			<h3><a href="index.php?logout='1'" class=" f-md text-decoration-none text-dark text-uppercase">logout</a>
 			</h3>
