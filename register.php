@@ -20,26 +20,26 @@
 				<div class="form-wrapper">
 					<?php include('errors.php'); ?>
 				</div>
-				<div class="form-wrapper">
+				<div class="form-wrapper mt-4">
 					<label>Username</label>
 					<input type="text" name="username" value="<?php echo $username; ?>" class="form-control">
 				</div> 
-				<div class="form-wrapper">
+				<div class="form-wrapper mt-4">
 					<label>Email</label>
 					<input type="email" name="email" value="<?php echo $email; ?>" class="form-control">
 				</div>
-				<div class="form-wrapper">
+				<div class="form-wrapper mt-4">
 					<label>Password</label>
 					<input type="password" name="password_1" class="form-control">
 				</div>
-				<div class="form-wrapper">
+				<div class="form-wrapper mt-4">
 					<label>Confirm password</label>
 					<input type="password" name="password_2" class="form-control">
 				</div>
-				<p class="text-center">
+				<p class="text-center mt-4">
 					Already a member? <a href="login.php">Sign in</a>
 				</p>
-				<div class="form-wrapper">
+				<div class="form-wrapper mt-4">
 					<button type="submit" class="btn btn-secondary mt-4 d-flex align-item-center m-auto" name="reg_user">Register</button>
 				</div>
 			</form>
