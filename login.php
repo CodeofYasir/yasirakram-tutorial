@@ -13,8 +13,8 @@
 </head>
 <body style="background-image: url('assest/img2.jpg')">
 	
-	<div class="col-lg-6 col-md-8 col-sm-12 col-10 m-auto">
-			<form class="forms border p-4 col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto" method="post" action="login.php">
+	<div class="col-lg-5 col-md-7 col-sm-8 col-10 m-auto">
+			<form class="forms border m-auto" method="post" action="login.php">
 				<h3 class="text-center">Login</h3>
 				<div class="form-wrapper text-center">
 					<?php include('errors.php'); ?>
