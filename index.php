@@ -71,7 +71,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">To Lend(Udhaar deyaa)</h3>
 				<div class="row mt-4">
@@ -166,7 +166,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(Udhaar Layna)</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -263,7 +263,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -339,7 +339,7 @@ $result = mysqli_query($db, $query);
 		<div class="mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Income</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
