@@ -164,9 +164,9 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Borrower Data============================ -->
 
-		<div class="mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-4 m-auto">
+		<div class="mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
 				<h3 class="text-center">Borrow(Udhaar Layna)</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -210,35 +210,35 @@ $result = mysqli_query($db, $query);
 				</div>
 			</div>
 
-			<table class="table text-center table-bordered table-striped table-hover mt-4">
+			<table class="m-auto table text-center table-sm table-borderless table-striped table-hover mt-4">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Amount</th>
-							<th>Description</th>
-							<th>Current Date</th>
-							<th>Return Date</th>
-							<th colspan="2">Action</th>
+							<th class="p-0 m-0">Name</th>
+							<th class="p-0 m-0">Amount</th>
+							<th class="p-0 m-0">Description</th>
+							<th class="p-0 m-0">Current Date</th>
+							<th class="p-0 m-0">Return Date</th>
+							<th class="p-0 m-0" colspan="2">Action</th>
 						</tr>
 					</thead>
 					<?php while ($row = mysqli_fetch_array($results)) { ?>
 					<tr>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['b_name']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['b_amount']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['b_desc']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['b_cdate']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['b_rdate']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
 								<span class="badge text-bg-success">return</span>
 							</a>
@@ -252,7 +252,7 @@ $result = mysqli_query($db, $query);
 				</table>
 
 
-			<h3 class="text-center">
+			<h3 class="text-center mt-4">
 			<?php echo $b_ans;?>
 			</h3>
 				
