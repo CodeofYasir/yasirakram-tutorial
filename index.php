@@ -69,7 +69,7 @@ $result = mysqli_query($db, $query);
 		</div>
 		<!-- ==============================Lender Data===================================== -->
 
-		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto">
+		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
 				<?php include('errors.php');?>
