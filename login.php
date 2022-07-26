@@ -22,7 +22,7 @@
 			<form method="post" action="login.php">
 				<h3>Login</h3>
 				<div class="form-wrapper">
-					<!-- <?php include('errors.php'); ?> -->
+					<?php include('errors.php'); ?>
 				</div>
 				<div class="form-wrapper">
 					<label>Username</label>
