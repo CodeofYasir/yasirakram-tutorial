@@ -1,24 +1,21 @@
 <?php include('server.php') ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>RegistrationForm_v2 by Colorlib</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- MATERIAL DESIGN ICONIC FONT -->
-	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
 	<!-- STYLE CSS -->
 	<link rel="stylesheet" href="./css/style.css">
-</head>
 
+	<title>Manage Khata</title>
+</head>
 <body>
+	
 	<div class="wrapper" style="background-image: url('assest/img2.jpg');">
 		<div class="inner">
-
-
+ 
 			<form method="post" action="login.php">
 				<h3>Login</h3>
 				<div class="form-wrapper">
