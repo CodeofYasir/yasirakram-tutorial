@@ -12,13 +12,7 @@ $query_builder = TRUE;
 // Connect to DB
 $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-// initializing variables
-// $username = "";
-// $email    = "";
-// $errors = array(); 
-
-// connect to the database
-// $db = mysqli_connect('localhost', 'root', '', 'khata');
+$errors = array(); 
 
 
 
