@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<div class="wrapper" style="background-image: url('images/img2.jpg');">
+	<div class="wrapper" style="background-image: url('assest/img2.jpg');">
 		<div class="inner">
 
 
