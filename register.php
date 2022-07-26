@@ -9,10 +9,10 @@
 
 	 
 	<!-- STYLE CSS -->
-	<link rel="stylesheet" href="css/style.css">
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
-<body class="wrapper" style="background-image: url('assest/img2.jpg');">
-	<div class=" col-lg-10 col-md-10 col-sm-12 col-xs-12" >
+<body style="background-image: url('assest/img2.jpg');">
+	<div class="wrapper">
 		<div class="inner">
 			<form method="post" action="register.php">
 				<h3>Register</h3>
