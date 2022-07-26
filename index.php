@@ -29,7 +29,7 @@ $result = mysqli_query($db, $query);
 
 <body style="background-image: url('assest/img2.jpg')">
 
-	<div class="container mt-3">
+	<div class="col-lg-10 col-md-10 col-10 mt-4 m-auto">
 		<!-- =============================header======================================= -->
 
 		<div class="d-flex justify-content-between align-items-center">
@@ -69,9 +69,9 @@ $result = mysqli_query($db, $query);
 		</div>
 		<!-- ==============================Lender Data===================================== -->
 
-		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-4 m-auto">
+		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">To Lend(Udhaar deyaa)</h3>
 				<div class="row mt-4">
@@ -116,35 +116,35 @@ $result = mysqli_query($db, $query);
 				</div>
 			</div>
 
-			<table id="lender_table" class="table text-center table-bordered table-striped table-hover mt-4 ">
+			<table id="lender_table" class="m-auto table text-center table-striped table-hover mt-4 ">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Amount</th>
-							<th>Description</th>
-							<th>Current Date</th>
-							<th>Return Date</th>
-							<th colspan="2">Action</th>
+							<th class="p-0 m-0">Name</th>
+							<th class="p-0 m-0">Amount</th>
+							<th class="p-0 m-0">Description</th>
+							<th class="p-0 m-0">Current Date</th>
+							<th class="p-0 m-0">Return Date</th>
+							<th colspan="2" class="p-0 m-0">Action</th>
 						</tr>
 					</thead>
 					<?php while ($row = mysqli_fetch_array($results)) { ?>
 					<tr>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['l_name']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['l_amont']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['l_desc']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['l_cdate']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['l_rdate']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
 								<span class="badge text-bg-success">received</span>
 							</a>
@@ -157,7 +157,7 @@ $result = mysqli_query($db, $query);
 					</tr>
 					<?php } ?>
 			</table>
-				<h3 class="text-center">
+				<h3 class="text-center mt-4">
 					<?php echo $l_ans;?>
 				</h3>	
 		</div>
