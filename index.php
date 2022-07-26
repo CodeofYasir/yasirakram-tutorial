@@ -116,7 +116,7 @@ $result = mysqli_query($db, $query);
 				</div>
 			</div>
 
-			<table id="lender_table" class="m-auto table text-center table-striped table-hover mt-4 ">
+			<table id="lender_table" class="m-auto table text-center table-borderless table-striped table-hover mt-4 ">
 					<thead>
 						<tr>
 							<th class="p-0 m-0">Name</th>
