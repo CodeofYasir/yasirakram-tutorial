@@ -14,8 +14,10 @@
 <body>
 	
 	<div class="wrapper" style="background-image: url('assest/img2.jpg');">
-		<div class="inner"> 
+		<div class="inner">
+ 
 			<form method="post" action="login.php">
+				<h3>Login</h3>
 				<div class="form-wrapper">
 					<?php include('errors.php'); ?>
 				</div>
@@ -33,7 +35,6 @@
 				<div class="form-wrapper">
 					<button type="submit" class="btn" name="login_user">Login</button>
 				</div>
-				<h3>Login</h3>
 				
 			</form>
 		</div>
