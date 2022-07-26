@@ -40,7 +40,7 @@
 					Already a member? <a href="login.php">Sign in</a>
 				</p>
 				<div class="form-wrapper">
-					<button type="submit" class="btn" name="reg_user">Register</button>
+					<button type="submit" class="btn btn-secondary mt-4 d-flex align-item-center m-auto" name="reg_user">Register</button>
 				</div>
 			</form>
 		 
