@@ -1,5 +1,6 @@
+<?php include('server.php')?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,6 @@
 </head>
 <body>
 	
-	<?php include('server.php')?>
 	<div class="wrapper" style="background-image: url('assest/img2.jpg');">
 		<div class="inner">
  
