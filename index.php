@@ -1,17 +1,17 @@
 <?php include('server.php') ?>
 <?php  
-//   if (!isset($_SESSION['username'])) {
-// 	  $_SESSION['msg'] = "You must log in first";
+  if (!isset($_SESSION['username'])) {
+	  $_SESSION['msg'] = "You must log in first";
 	  
-//   	header('location: login.php');
-// }
-// if (isset($_GET['logout'])) {
-// 	session_destroy();
-// 	unset($_SESSION['username']);
-// 	header("location: login.php");
-// }
-// $query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
-// $result = mysqli_query($db, $query);
+  	header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+	session_destroy();
+	unset($_SESSION['username']);
+	header("location: login.php");
+}
+$query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
+$result = mysqli_query($db, $query);
 ?>
 <!DOCTYPE html>
 <html>
