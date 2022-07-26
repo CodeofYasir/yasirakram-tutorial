@@ -261,9 +261,9 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Investment Data============================ -->
 
-		<div class="mb-5 forms investment-form col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-4 m-auto">
+		<div class="mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
 				<h3 class="text-center">Investment</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -303,31 +303,31 @@ $result = mysqli_query($db, $query);
 		<table class="table text-center table-bordered table-striped table-hover mt-4">
 					<thead>
 						<tr>
-							<th>Category/Type</th>
-							<th>Amount</th>
-							<th>Description</th>
-							<th>Current Date</th>
+							<th class="p-0 m-0">Category/Type</th>
+							<th class="p-0 m-0">Amount</th>
+							<th class="p-0 m-0">Description</th>
+							<th class="p-0 m-0">Current Date</th>
 						</tr>
 					</thead>
 					<?php while ($row = mysqli_fetch_array($results)) { ?>
 					<tr>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['i_name']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['i_amount']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['i_desc']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['i_cdate']; ?>
 						</td>
 					</tr>
 					<?php } ?>
 		</table>
 
-			<h3 class="text-center">
+			<h3 class="text-center mt-4">
 					<?php echo $i_ans;?>
 			</h3>
 			 
@@ -336,10 +336,10 @@ $result = mysqli_query($db, $query);
 		<!-- ====================Income Data============================ -->
 
 
-		<div class="mb-5 forms income-form col-lg-10 col-md-10 col-sm-12 col-xs-12 mt-4 m-auto">
+		<div class="mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
 
 
-			<form method="post" action="index.php" class="mt-4 col-lg-10 col-md-10 col-sm-12 col-xs-12 m-auto">
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-12 col-xs-12 m-auto">
 				<h3 class="text-center">Income</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -380,24 +380,24 @@ $result = mysqli_query($db, $query);
 		<table class="table text-center table-bordered table-striped table-hover mt-4">
 					<thead>
 						<tr>
-							<th>Category/Type</th>
-							<th>Amount</th>
-							<th>Description</th>
-							<th>Current Date</th>
+							<th class="p-0 m-0">Category/Type</th>
+							<th class="p-0 m-0">Amount</th>
+							<th class="p-0 m-0">Description</th>
+							<th class="p-0 m-0">Current Date</th>
 						</tr>
 					</thead>
 					<?php while ($row = mysqli_fetch_array($results)) { ?>
 					<tr>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['inc_name']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['inc_amount']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['inc_desc']; ?>
 						</td>
-						<td>
+						<td class="p-0 m-0">
 							<?php echo $row['inc_cdate']; ?>
 						</td>
 					</tr>
@@ -405,7 +405,7 @@ $result = mysqli_query($db, $query);
 		</table>
 
 
-			<h3 class="text-center">
+			<h3 class="text-center mt-4">
 					<?php echo $inc_ans;?>
 			</h3>
 			 
