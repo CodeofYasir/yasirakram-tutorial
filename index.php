@@ -425,6 +425,8 @@ $result = mysqli_query($db, $query);
 </script>
 
 <!-- ================================categories change jquery -->
+
+<!-- ================================categories change jquery -->
 <script>
 	$(document).ready(function () {
 		$(".forms").css("display", "none");
