@@ -35,7 +35,7 @@ $result = mysqli_query($db, $query);
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="d-flex justify-content-between align-items-center">
 				<?php  if (isset($_SESSION['email'])) : ?>
-				<h4 class="text-uppercase"><?php echo $_SESSION['email'];?></h4>
+				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
 				<small>
 					<strong>
 					<?php 
