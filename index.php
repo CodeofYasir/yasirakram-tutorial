@@ -1,13 +1,13 @@
 <?php include('server.php') ?>
 <?php  
-  if (!isset($_SESSION['email'])) {
+  if (!isset($_SESSION['username'])) {
 	  $_SESSION['msg'] = "You must log in first";
 	  
   	header('location: login.php');
 }
 if (isset($_GET['logout'])) {
 	session_destroy();
-	unset($_SESSION['email']);
+	unset($_SESSION['username']);
 	header("location: login.php");
 }
 $query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
@@ -34,8 +34,8 @@ $result = mysqli_query($db, $query);
 
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="d-flex justify-content-between align-items-center">
-				<?php  if (isset($_SESSION['email'])) : ?>
-				<h4 class="text-uppercase"><?php echo $username;?></h4>
+				<?php  if (isset($_SESSION['username'])) : ?>
+				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
 				<small>
 					<strong>
 					<?php 
