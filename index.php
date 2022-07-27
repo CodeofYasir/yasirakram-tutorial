@@ -1,4 +1,19 @@
-
+<?php include('server.php') ?>
+<?php
+  
+  if (!isset($_SESSION['username'])) {
+	$_SESSION['msg'] = "You must log in first";
+	
+	header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+  session_destroy();
+  unset($_SESSION['username']);
+  header("location: login.php");
+}
+$query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
+$result = mysqli_query($db, $query);
+?>
 <!DOCTYPE html>
 <html>
 	
@@ -11,7 +26,6 @@
 	    <!-- bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-		<?php include('server.php') ?>
 	</head>
 
 <body style="background-image: url('assest/img2.jpg')">
