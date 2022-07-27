@@ -21,7 +21,7 @@
 				</div>
 				<div class="form-wrapper">
 					<label>Username</label>
-					<input type="text" name="username" class="form-control">
+					<input type="email" name="email" class="form-control">
 				</div>
 				<div class="form-wrapper mt-4">
 					<label>Password</label>
