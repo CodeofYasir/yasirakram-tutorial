@@ -90,8 +90,11 @@ if (isset($_POST['login_user'])) {
     $u_id = $i['user_id'];
   }
  
-    //============================= Submit Expenses Data============================//
-    if (isset($_POST['expenses_data'])) {
+
+
+  //============================= Submit Expenses Data============================//
+
+  if (isset($_POST['expenses_data'])) {
       $e_name = mysqli_real_escape_string($db, $_POST['e_name']);
       $e_amount = mysqli_real_escape_string($db, $_POST['e_amount']);
       $e_desc = mysqli_real_escape_string($db, $_POST['e_desc']);
@@ -113,11 +116,11 @@ if (isset($_POST['login_user'])) {
     while ($e = mysqli_fetch_assoc($result)) {
       $total_exp= $e['sum'] + 0;
       $e_ans = "Expenses Total Amount is: "."". $total_exp;
-    }
+  }
 
-		 
+
   //============================= Submit Lender Data============================//
-  if (isset($_POST['lender_data'])) {
+if (isset($_POST['lender_data'])) {
     $l_name = mysqli_real_escape_string($db, $_POST['l_name']);
     $l_amount = mysqli_real_escape_string($db, $_POST['l_amount']);
     $l_desc = mysqli_real_escape_string($db, $_POST['l_desc']);
@@ -151,67 +154,53 @@ if (isset($_POST['login_user'])) {
     header('location: index.php');
 }
 
-// ==============lender filter
+// ==============lender filter=================================
+
 if(isset($_POST["from_date"], $_POST["to_date"]))  
-
-
- {  
-      $db = mysqli_connect('localhost', 'root', '', 'khata');        
-      $output = '';  
-      $query = "SELECT * FROM lender  
-           WHERE l_rdate BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."' AND u_id = '$u_id'";  
-      $result = mysqli_query($db, $query);  
-      $output .= '  
-           <table class="table table-bordered">  
-                <tr>  
-                     <th width="5%">ID</th>  
-                     <th width="10%">Name</th>  
-                     <th width="10%">Amount</th>  
-                     <th width="10%">Deacriptopm</th>  
-                     <th width="12%">Current Date</th>  
-                     <th width="12%">Return Date</th>
-                     <th colspan="2">Action</th>  
-                </tr>  
-      ';  
-      if(mysqli_num_rows($result) > 0)  
-      {  
-           while($row = mysqli_fetch_array($result))  
-           {  
-                $output .= '  
-                     <tr>  
-                          <td>'. $row["l_id"] .'</td>  
-                          <td>'. $row["l_name"] .'</td>  
-                          <td>'. $row["l_amont"] .'</td>  
-                          <td>'. $row["l_desc"] .'</td>  
-                          <td>'. $row["l_cdate"] .'</td>  
-                          <td>'. $row["l_rdate"] .'</td>
-                          <td>
-							            <a href="server.php?del=<?php echo '.$row["l_id"].'?>" class="text-decoration-none">
-								          <span class="badge text-bg-success">received</span>
-							            </a>
-							            <a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-								          data-bs-custom-class="custom-tooltip color-light"
-								          data-bs-title="If you know that you will never get this money"
-                          class="text-decoration-none">
-								          <span class="badge text-bg-warning">not received</span>
-							            </a>
-						              </td>  
-                     </tr>  
-                ';  
-           }  
-      }  
-      else  
-      {  
-           $output .= '  
-                <tr>  
-                     <td colspan="5">No Record Found</td>  
-                </tr>  
-           ';  
-      }  
-      $output .= '</table>';  
-      echo $output;  
+{  
+     $connect = mysqli_connect("localhost", "root", "", "khata");  
+     $output = '';  
+     $query = "  SELECT * FROM lender  
+          WHERE l_rdate BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";  
+     $result = mysqli_query($connect, $query);  
+     $output .= '  
+          <table class="table table-bordered">  
+               <tr>  
+                    <th width="5%">ID</th>  
+                    <th width="10%">Name</th>  
+                    <th width="10%">Amount</th>  
+                    <th width="10%">Deacriptopm</th>  
+                    <th width="12%">Current Date</th>  
+                    <th width="12%">Return Date</th>  
+               </tr>  
+     ';  
+     if(mysqli_num_rows($result) > 0)  
+     {  
+          while($row = mysqli_fetch_array($result))  
+          {  
+               $output .= '  
+                    <tr>  
+                         <td>'. $row["l_id"] .'</td>  
+                         <td>'. $row["l_name"] .'</td>  
+                         <td>'. $row["l_amont"] .'</td>  
+                         <td>'. $row["l_desc"] .'</td>  
+                         <td>'. $row["l_cdate"] .'</td>  
+                         <td>'. $row["l_rdate"] .'</td>  
+                    </tr>  
+               ';  
+          }  
+     }  
+     else  
+     {  
+          $output .= '  
+               <tr>  
+                    <td colspan="5">No Order Found</td>  
+               </tr>  
+          ';  
+     }  
+     $output .= '</table>';  
+     echo $output;  
 }
-
 
 
 

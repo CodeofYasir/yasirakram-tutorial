@@ -16,30 +16,38 @@ $result = mysqli_query($db, $query);
 ?>
 <!DOCTYPE html>
 <html>
-	
-	<head>
-		<meta charset="utf-8">
-		<title>Manage Khata</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <!--Jquery  -->
-	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	    <!-- bootstrap -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+
+<head>
+	<meta charset="utf-8">
+	<title>Manage Khata</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Jquery  -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<!-- bootstrap -->
+      	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	</head>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</head>
 
 <body style="background-image: url('assest/img2.jpg')">
 
 	<div class="col-lg-10 col-md-10 col-12 m-auto   p-1">
 		<!-- =============================header======================================= -->
 
-		<div class="bg-primary p-2 text-light bg-gradient d-flex justify-content-between align-items-center col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-5">
+		<div
+			class="bg-primary p-2 text-light bg-gradient d-flex justify-content-between align-items-center col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-5">
 			<div class="d-flex justify-content-between align-items-center">
 				<?php  if (isset($_SESSION['username'])) : ?>
 				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
 				<small>
 					<strong>
-					<?php 
+						<?php 
 			    $total = ($total_inc+$total_borrow)-($total_investment+$total_lend+$total_exp); 
 				echo "(balance: ".$total.")";
 				?>
@@ -70,77 +78,62 @@ $result = mysqli_query($db, $query);
 			</div>
 		</div>
 
-		<!-- ==============================Expenses Data===================================== -->
+	<!-- ==============================Expenses Data===================================== -->
 
-<div class="bg-info p-2  bg-gradient mb-5 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div class="bg-info p-2  bg-gradient mb-5 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
-	<?php include('errors.php');?>
-	<h3 class="text-center">Expenses(اخراجات)</h3>
-	<div class="row mt-4">
-		<div class="col">
-			<input type="text" name="e_name" class="form-control" placeholder="Type">
-		</div>
-		<div class="col">
-			<input type="text" name="e_amount" class="form-control" placeholder="Amount">
-		</div>
-	</div>
-	<textarea name="e_desc" class="col-12 mt-4 p-1" id="desc" cols="10" rows="3"
-		placeholder="Description"></textarea>
-	<div class=" d-grid col-4 mx-auto">
-		<button type="submit" name="expenses_data"
-		class="btn btn-dark mt-4">Submit</button>
-	</div>
-</form>
+			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<?php include('errors.php');?>
+				<h3 class="text-center">Expenses(اخراجات)</h3>
+				<div class="row mt-4">
+					<div class="col">
+						<input type="text" name="e_name" class="form-control" placeholder="Type">
+					</div>
+					<div class="col">
+						<input type="text" name="e_amount" class="form-control" placeholder="Amount">
+					</div>
+				</div>
+				<textarea name="e_desc" class="col-12 mt-4 p-1" id="desc" cols="10" rows="3"
+					placeholder="Description"></textarea>
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" name="expenses_data" class="btn btn-dark mt-4">Submit</button>
+				</div>
+			</form>
 
-
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-	<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
-	<h3 class="text-center">Lender Data</h3>
-	<div class="row mt-4 justify-content-center">
-		<div class="col-3 col-lg-5 col-md-12 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
-			<input type="text" name="from_date" id="from_date" class="form-control"
-				placeholder="From Date" />
+			<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
+			<table id="expenses_table"
+				class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
+				<thead>
+					<tr>
+						<th class="p-0 m-0">Type</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">Description</th>
+					</tr>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['e_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['e_amont']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['e_desc']; ?>
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
+			
+			<h3 class="text-center mt-4">
+				<?php echo $e_ans;?>
+			</h3>
 		</div>
-		<div class="col-3 col-lg-5 col-md-12 col-sm-12 mb-md-2 mb-sm-2 mb-2 col-12">
-			<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
-		</div>
-		<div class="col-4 col-lg-2 col-md-4 col-sm-4 col-xs-4">
-			<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
-		</div>
-	</div>
-</div>
-
-<table id="expenses_table" class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
-		<thead>
-			<tr>
-				<th class="p-0 m-0">Type</th>
-				<th class="p-0 m-0">Amount</th>
-				<th class="p-0 m-0">Description</th>
-			</tr>
-		</thead>
-		<?php while ($row = mysqli_fetch_array($results)) { ?>
-		<tr>
-			<td class="p-0 m-0">
-				<?php echo $row['e_name']; ?>
-			</td>
-			<td class="p-0 m-0">
-				<?php echo $row['e_amont']; ?>
-			</td>
-			<td class="p-0 m-0">
-				<?php echo $row['e_desc']; ?>
-			</td>
-		</tr>
-		<?php } ?>
-</table>
-	<h3 class="text-center mt-4">
-		<?php echo $e_ans;?>
-	</h3>	
-</div>
 
 		<!-- ==============================Lender Data===================================== -->
 
-		<div class="bg-info p-2  bg-gradient mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="bg-info p-2  bg-gradient mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
@@ -164,80 +157,64 @@ $result = mysqli_query($db, $query);
 						<label for="">Return date</label>
 						<input type="date" name="l_rdate" class="form-control">
 					</div>
-				</div> 
+				</div>
 				<div class=" d-grid col-4 mx-auto">
-					<button type="submit" name="lender_data"
-					class="btn btn-dark mt-4">Submit</button>
+					<button type="submit" name="lender_data" class="btn btn-dark mt-4">Submit</button>
 				</div>
 			</form>
-
-
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-				<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
-				<h3 class="text-center">Lender Data</h3>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-3 col-lg-5 col-md-12 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
-						<input type="text" name="from_date" id="from_date" class="form-control"
-							placeholder="From Date" />
-					</div>
-					<div class="col-3 col-lg-5 col-md-12 col-sm-12 mb-md-2 mb-sm-2 mb-2 col-12">
-						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
-					</div>
-					<div class="col-4 col-lg-2 col-md-4 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
-					</div>
-				</div>
-			</div>
-
-			<table id="lender_table" class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
-					<thead>
-						<tr>
-							<th class="p-0 m-0">Name</th>
-							<th class="p-0 m-0">Amount</th>
-							<th class="p-0 m-0">Description</th>
-							<th class="p-0 m-0">Current Date</th>
-							<th class="p-0 m-0">Return Date</th>
-							<th colspan="2" class="p-0 m-0">Action</th>
-						</tr>
-					</thead>
-					<?php while ($row = mysqli_fetch_array($results)) { ?>
+ 
+			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
+			<table id="lender_table"
+				class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
+				<thead>
 					<tr>
-						<td class="p-0 m-0">
-							<?php echo $row['l_name']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['l_amont']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['l_desc']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['l_cdate']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['l_rdate']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
-								<span class="badge text-bg-success">received</span>
-							</a>
-							<a class="text-decoration-none" href="" data-bs-toggle="tooltip" data-bs-placement="top"
-								data-bs-custom-class="custom-tooltip color-light"
-								data-bs-title="If you know that you will never get this money">
-								<span class="badge text-bg-warning">not received</span>
-							</a>
-						</td>
+						<th class="p-0 m-0">Name</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">Desc</th>
+						<th class="p-0 m-0">Current Date</th>
+						<th class="p-0 m-0">Return Date</th>
+						<th colspan="2" class="p-0 m-0">Action</th>
 					</tr>
-					<?php } ?>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['l_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_amont']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_cdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_rdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
+							<span class="badge text-bg-success">received</span>
+						</a>
+						<a class="text-decoration-none" href="" data-bs-toggle="tooltip" data-bs-placement="top"
+							data-bs-custom-class="custom-tooltip color-light"
+							data-bs-title="If you know that you will never get this money">
+							<span class="badge text-bg-warning">not received</span>
+						</a>
+					</td>
+				</tr>
+				<?php } ?>
 			</table>
-				<h3 class="text-center mt-4">
-					<?php echo $l_ans;?>
-				</h3>	
+			<h3 class="text-center mt-4">
+				<?php echo $l_ans;?>
+			</h3>
 		</div>
 
 		<!-- ====================Borrower Data============================ -->
 
-		<div class="bg-info p-2  bg-gradient mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="bg-info p-2  bg-gradient mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(ادھار لینا)</h3>
@@ -263,81 +240,66 @@ $result = mysqli_query($db, $query);
 					</div>
 				</div>
 				<div class=" d-grid col-4 mx-auto">
-					<button name="borrow_data" class="btn btn-dark mt-4"
-						type="submit">Submit</button>
-			    </div>
+					<button name="borrow_data" class="btn btn-dark mt-4" type="submit">Submit</button>
+				</div>
 
 			</form>
 
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-				<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
-				<h3 class="text-center">Borrower Data</h3>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
-						<input type="text" name="from_date" id="from_date" class="form-control"
-							placeholder="From Date" />
-					</div>
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 mb-sm-2 mb-2 col-12">
-						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
-					</div>
-					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
-					</div>
-				</div>
-			</div>
-
-			<table class="m-auto table text-center table-bordered border-dark table-sm table-borderless table-striped table-hover mt-4">
-					<thead>
-						<tr>
-							<th class="p-0 m-0">Name</th>
-							<th class="p-0 m-0">Amount</th>
-							<th class="p-0 m-0">Description</th>
-							<th class="p-0 m-0">Current Date</th>
-							<th class="p-0 m-0">Return Date</th>
-							<th class="p-0 m-0" colspan="2">Action</th>
-						</tr>
-					</thead>
-					<?php while ($row = mysqli_fetch_array($results)) { ?>
+			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
+			<table
+				class="m-auto table text-center table-bordered border-dark table-sm table-borderless table-striped table-hover mt-4">
+				<thead>
 					<tr>
-						<td class="p-0 m-0">
-							<?php echo $row['b_name']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['b_amount']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['b_desc']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['b_cdate']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['b_rdate']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
-								<span class="badge text-bg-success">return</span>
-							</a>
-							<a class="text-decoration-none" href="#">
-								<span class="badge text-bg-warning">not return</span>
-							</a>
-
-						</td>
+						<th class="p-0 m-0">Name</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">desc</th>
+						<th class="p-0 m-0">Current Date</th>
+						<th class="p-0 m-0">Return Date</th>
+						<th class="p-0 m-0" colspan="2">Action</th>
 					</tr>
-					<?php } ?>
-				</table>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['b_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_amount']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_cdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_rdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
+							<span class="badge text-bg-success">return</span>
+						</a>
+						<a class="text-decoration-none" href="#">
+							<span class="badge text-bg-warning">not return</span>
+						</a>
+
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
 
 
 			<h3 class="text-center mt-4">
-			<?php echo $b_ans;?>
+				<?php echo $b_ans;?>
 			</h3>
-				
-		 
+
+
 		</div>
 
 		<!-- ====================Investment Data============================ -->
 
-		<div class="bg-info p-2  bg-gradient mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="bg-info p-2  bg-gradient mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment(سرمایہ کاری)</h3>
@@ -355,66 +317,52 @@ $result = mysqli_query($db, $query);
 				<label for="">Current date</label>
 				<input type="date" name="i_cdate" class="form-control">
 				<div class=" d-grid col-4 mx-auto">
-					<button class="btn btn-dark mt-4" type="submit"
-					name="investment_data">Submit</button>
+					<button class="btn btn-dark mt-4" type="submit" name="investment_data">Submit</button>
 				</div>
-				</form>
-
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-				<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
-				<h3 class="text-center">Investment Data</h3>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
-						<input type="text" name="from_date" id="from_date" class="form-control"
-							placeholder="From Date" />
-					</div>
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 mb-sm-2 mb-2 col-12">
-						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
-					</div>
-					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
-					</div>
-				</div>
-			</div>
+			</form>
 
 			 
-		<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
-					<thead>
-						<tr>
-							<th class="p-0 m-0">Category/Type</th>
-							<th class="p-0 m-0">Amount</th>
-							<th class="p-0 m-0">Description</th>
-							<th class="p-0 m-0">Current Date</th>
-						</tr>
-					</thead>
-					<?php while ($row = mysqli_fetch_array($results)) { ?>
+
+			<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
+
+			<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
+				<thead>
 					<tr>
-						<td class="p-0 m-0">
-							<?php echo $row['i_name']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['i_amount']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['i_desc']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['i_cdate']; ?>
-						</td>
+						<th class="p-0 m-0">Category/Type</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">Description</th>
+						<th class="p-0 m-0">Current Date</th>
 					</tr>
-					<?php } ?>
-		</table>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['i_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['i_amount']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['i_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['i_cdate']; ?>
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
 
 			<h3 class="text-center mt-4">
-					<?php echo $i_ans;?>
+				<?php echo $i_ans;?>
 			</h3>
-			 
+
 		</div>
 
 		<!-- ====================Income Data============================ -->
 
 
-		<div class="bg-info p-2  bg-gradient mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="bg-info p-2  bg-gradient mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
@@ -433,15 +381,49 @@ $result = mysqli_query($db, $query);
 				<label for="">Current date</label>
 				<input type="date" name="inc_cdate" class="form-control">
 				<div class=" d-grid col-4 mx-auto">
-					<button name="income_data" class="btn btn-dark mt-4"
-					type="submit">Submit</button>
+					<button name="income_data" class="btn btn-dark mt-4" type="submit">Submit</button>
 				</div>
 			</form>
 
 
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
-				<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
-				<h3 class="text-center">Income Data</h3>
+
+			<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
+
+			<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
+				<thead>
+					<tr>
+						<th class="p-0 m-0">Category/Type</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">Description</th>
+						<th class="p-0 m-0">Current Date</th>
+					</tr>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['inc_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['inc_amount']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['inc_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['inc_cdate']; ?>
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
+
+			<h3 class="text-center mt-4">
+				<?php echo $inc_ans;?>
+			</h3>
+		</div>
+
+		
+		<div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<h3 class="text-center">Lender Data</h3>
 				<div class="row mt-4 justify-content-center">
 					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
 						<input type="text" name="from_date" id="from_date" class="form-control"
@@ -453,43 +435,38 @@ $result = mysqli_query($db, $query);
 					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
 						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
 					</div>
+					<div style="clear:both"></div>                 
 				</div>
-			</div>
-
-			 
-		<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
-					<thead>
-						<tr>
-							<th class="p-0 m-0">Category/Type</th>
-							<th class="p-0 m-0">Amount</th>
-							<th class="p-0 m-0">Description</th>
-							<th class="p-0 m-0">Current Date</th>
-						</tr>
-					</thead>
-					<?php while ($row = mysqli_fetch_array($results)) { ?>
-					<tr>
-						<td class="p-0 m-0">
-							<?php echo $row['inc_name']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['inc_amount']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['inc_desc']; ?>
-						</td>
-						<td class="p-0 m-0">
-							<?php echo $row['inc_cdate']; ?>
-						</td>
-					</tr>
-					<?php } ?>
-		</table>
-
-
-			<h3 class="text-center mt-4">
-					<?php echo $inc_ans;?>
-			</h3>
-			 
+				<div id="lender_table">  
+                     <table class="table table-bordered">  
+                          <tr>  
+                               <th width="4%">ID</th>  
+                               <th width="10%">Name</th>  
+                               <th width="10%">Amount</th>  
+                               <th width="10%">Description</th>  
+                               <th width="12%">Current Date</th>  
+                               <th width="12%">Return Date</th>  
+                          </tr>  
+                     <?php  
+                     while($row = mysqli_fetch_array($result))  
+                     {  
+                     ?>  
+                          <tr>  
+                               <td><?php echo $row["l_id"]; ?></td>  
+                               <td><?php echo $row["l_name"]; ?></td>  
+                               <td><?php echo $row["l_amont"]; ?></td>  
+                               <td><?php echo $row["l_desc"]; ?></td>  
+                               <td><?php echo $row["l_cdate"]; ?></td>  
+                               <td><?php echo $row["l_rdate"]; ?></td>  
+                          </tr>  
+                     <?php  
+                     }  
+                     ?>  
+                     </table>  
+                </div>  
 		</div>
+		
+
 
 	</div>
 
@@ -498,11 +475,7 @@ $result = mysqli_query($db, $query);
 </body>
 
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
+
 
 
 
