@@ -13,9 +13,9 @@ $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cle
 
 
 
-$username = "";
-$email    = "";
-$db = mysqli_connect('localhost', 'root', '', 'khata');
+// $username = "";
+// $email    = "";
+// $db = mysqli_connect('localhost', 'root', '', 'khata');
 
 
 
