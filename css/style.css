@@ -1,0 +1,42 @@
+* {
+    border: none !important;
+    outline: none !important;
+    background-clip: none !important;
+}
+
+body {
+    background: radial-gradient(#002D62, #0a2351);
+}
+
+form input,
+textarea,
+button {
+    color: whitesmoke !important;
+    background: #023774 !important;
+    padding-left: 0.5rem !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: lightgray !important;
+}
+
+label,
+span,
+h3,
+h4,
+a,
+p {
+    color: whitesmoke !important;
+}
+
+li a:hover,
+ul {
+    color: #002D62 !important;
+}
+
+table,
+th,
+td {
+    color: whitesmoke !important;
+}

@@ -92,16 +92,16 @@ if (isset($_POST['login_user'])) {
  
 
 
-  //============================= Submit Expenses Data============================//
+//============================= Submit Expenses Data============================//
 
-  if (isset($_POST['expenses_data'])) {
+if (isset($_POST['expenses_data'])) {
       $e_name = mysqli_real_escape_string($db, $_POST['e_name']);
       $e_amount = mysqli_real_escape_string($db, $_POST['e_amount']);
       $e_desc = mysqli_real_escape_string($db, $_POST['e_desc']);
       
-      if (empty($e_name)) {array_push($errors, "Name is required");}
-      if (empty($e_amount)) {array_push($errors, "Amount is required");}
-      if (empty($e_desc)) {array_push($errors, "Description is required");}
+      // if (empty($e_name)) {array_push($errors, "Name is required");}
+      // if (empty($e_amount)) {array_push($errors, "Amount is required");}
+      // if (empty($e_desc)) {array_push($errors, "Description is required");}
         
       if (count($errors) == 0) {
         $q= "INSERT INTO expenses(u_id,e_name,e_amont,e_desc) 
@@ -127,11 +127,11 @@ if (isset($_POST['lender_data'])) {
     $l_cdate = mysqli_real_escape_string($db, $_POST['l_cdate']);
     $l_rdate = mysqli_real_escape_string($db, $_POST['l_rdate']);
     
-    if (empty($l_name)) {array_push($errors, "Name is required");}
-    if (empty($l_amount)) {array_push($errors, "Amount is required");}
-    if (empty($l_desc)) {array_push($errors, "Description is required");}
-    if (empty($l_cdate)) {array_push($errors, "Current Date is required");}
-    if (empty($l_rdate)) {array_push($errors, "Return Date is required");}
+    // if (empty($l_name)) {array_push($errors, "Name is required");}
+    // if (empty($l_amount)) {array_push($errors, "Amount is required");}
+    // if (empty($l_desc)) {array_push($errors, "Description is required");}
+    // if (empty($l_cdate)) {array_push($errors, "Current Date is required");}
+    // if (empty($l_rdate)) {array_push($errors, "Return Date is required");}
       
     if (count($errors) == 0) {
       $q= "INSERT INTO lender(u_id,l_name,l_amont,l_desc,l_cdate,l_rdate) 
@@ -154,54 +154,6 @@ if (isset($_POST['lender_data'])) {
     header('location: index.php');
 }
 
-// ==============lender filter=================================
-
-if(isset($_POST["from_date"], $_POST["to_date"]))  
-{  
-     $connect = mysqli_connect("localhost", "root", "", "khata");  
-     $output = '';  
-     $query = "  SELECT * FROM lender  
-          WHERE l_rdate BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";  
-     $result = mysqli_query($connect, $query);  
-     $output .= '  
-          <table class="table table-bordered">  
-               <tr>  
-                    <th width="5%">ID</th>  
-                    <th width="10%">Name</th>  
-                    <th width="10%">Amount</th>  
-                    <th width="10%">Deacriptopm</th>  
-                    <th width="12%">Current Date</th>  
-                    <th width="12%">Return Date</th>  
-               </tr>  
-     ';  
-     if(mysqli_num_rows($result) > 0)  
-     {  
-          while($row = mysqli_fetch_array($result))  
-          {  
-               $output .= '  
-                    <tr>  
-                         <td>'. $row["l_id"] .'</td>  
-                         <td>'. $row["l_name"] .'</td>  
-                         <td>'. $row["l_amont"] .'</td>  
-                         <td>'. $row["l_desc"] .'</td>  
-                         <td>'. $row["l_cdate"] .'</td>  
-                         <td>'. $row["l_rdate"] .'</td>  
-                    </tr>  
-               ';  
-          }  
-     }  
-     else  
-     {  
-          $output .= '  
-               <tr>  
-                    <td colspan="5">No Order Found</td>  
-               </tr>  
-          ';  
-     }  
-     $output .= '</table>';  
-     echo $output;  
-}
-
 
 
  //============================= submit data for borrow===============================//
@@ -213,11 +165,11 @@ if(isset($_POST["from_date"], $_POST["to_date"]))
     $b_cdate = mysqli_real_escape_string($db, $_POST['b_cdate']);
     $b_rdate = mysqli_real_escape_string($db, $_POST['b_rdate']);
     
-    if (empty($b_name)) {array_push($errors, "Name is required");}
-    if (empty($b_amount)) {array_push($errors, "Amount is required");}
-    if (empty($b_desc)) {array_push($errors, "Description is required");}
-    if (empty($b_cdate)) {array_push($errors, "Current Date is required");}
-    if (empty($b_rdate)) {array_push($errors, "Return Date is required");}
+    // if (empty($b_name)) {array_push($errors, "Name is required");}
+    // if (empty($b_amount)) {array_push($errors, "Amount is required");}
+    // if (empty($b_desc)) {array_push($errors, "Description is required");}
+    // if (empty($b_cdate)) {array_push($errors, "Current Date is required");}
+    // if (empty($b_rdate)) {array_push($errors, "Return Date is required");}
   
     if (count($errors) == 0) {
       $qu= "INSERT INTO borrow(u_id,b_name,b_amount,b_desc,b_cdate,b_rdate) 
@@ -249,10 +201,10 @@ if(isset($_POST["from_date"], $_POST["to_date"]))
       $i_desc = mysqli_real_escape_string($db, $_POST['i_desc']);
       $i_cdate = mysqli_real_escape_string($db, $_POST['i_cdate']);
       
-      if (empty($i_name)) {array_push($errors, "Name is required");}
-      if (empty($i_amount)) {array_push($errors, "Amount is required");}
-      if (empty($i_desc)) {array_push($errors, "Description is required");}
-      if (empty($i_cdate)) {array_push($errors, "Current Date is required");}
+      // if (empty($i_name)) {array_push($errors, "Name is required");}
+      // if (empty($i_amount)) {array_push($errors, "Amount is required");}
+      // if (empty($i_desc)) {array_push($errors, "Description is required");}
+      // if (empty($i_cdate)) {array_push($errors, "Current Date is required");}
      
      
       
@@ -281,10 +233,10 @@ if (isset($_POST['income_data'])) {
   $inc_desc = mysqli_real_escape_string($db, $_POST['inc_desc']);
   $inc_cdate = mysqli_real_escape_string($db, $_POST['inc_cdate']);
   
-  if (empty($inc_name)) {array_push($errors, "Name is required");}
-  if (empty($inc_amount)) {array_push($errors, "Amount is required");}
-  if (empty($inc_desc)) {array_push($errors, "Description is required");}
-  if (empty($inc_cdate)) {array_push($errors, "Current Date is required");}
+  // if (empty($inc_name)) {array_push($errors, "Name is required");}
+  // if (empty($inc_amount)) {array_push($errors, "Amount is required");}
+  // if (empty($inc_desc)) {array_push($errors, "Description is required");}
+  // if (empty($inc_cdate)) {array_push($errors, "Current Date is required");}
  
  
   

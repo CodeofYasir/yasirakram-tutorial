@@ -23,6 +23,7 @@ $result = mysqli_query($db, $query);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--Jquery  -->
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="./css/style.css">
 	<!-- bootstrap -->
       	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -35,16 +36,15 @@ $result = mysqli_query($db, $query);
         </script>
 </head>
 
-<body style="background-image: url('assest/img2.jpg')">
+<body>
 
-	<div class="col-lg-10 col-md-10 col-12 m-auto   p-1">
+	<div class="col-lg-10 col-md-10 col-12 m-auto  p-1">
 		<!-- =============================header======================================= -->
 
-		<div
-			class="bg-primary p-2 text-light bg-gradient d-flex justify-content-between align-items-center col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-5">
-			<div class="d-flex justify-content-between align-items-center">
+		<div class="border text-light p-2 bg-gradient align-items-center d-flex justify-content-between col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-2">
+			<div class="d-flex justify-content-center align-items-center">
 				<?php  if (isset($_SESSION['username'])) : ?>
-				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
+				<h4 class="text-uppercase px-1 py-1"><?php echo $_SESSION['username'];?></h4>
 				<small>
 					<strong>
 						<?php 
@@ -54,21 +54,22 @@ $result = mysqli_query($db, $query);
 					</strong>
 				</small>
 			</div>
-			<h3><a href="index.php?logout='1'" class=" f-md text-decoration-none text-light text-uppercase">logout</a>
-			</h3>
+			<div class="d-flex justify-content-center align-items-center">
+				<a href="index.php?logout='1'" class="btn  text-decoration-none text-light text-uppercase">logout</a>
+			</div>
 			<?php endif ?>
 		</div>
 
 		<!-- =============================Categories======================================= -->
 
-		<div class="bg-info bg-gradien col-lg-10 p-2 col-md-10 col-sm-10 col-xs-10 m-auto mt-1">
+		<div class="col-lg-10 p-2 col-md-10 col-sm-10 col-xs-10 m-auto mt-1">
 			<div class="dropdown text-center">
 				<h3>Enter Data</h3>
 				<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
 					aria-expanded="false">
 					-- Select Category --
 				</button>
-				<ul class="dropdown-menu">
+				<ul class="dropdown-menu border bg-transparent">
 					<li><a class="0 dropdown-item" href="#">Expenses</a></li>
 					<li><a class="1 dropdown-item" href="#">To Lend</a></li>
 					<li><a class="2 dropdown-item" href="#">Borrow</a></li>
@@ -80,9 +81,9 @@ $result = mysqli_query($db, $query);
 
 	<!-- ==============================Expenses Data===================================== -->
 
-		<div class="bg-info p-2  bg-gradient mb-5 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div class="p-2  border mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">Expenses(اخراجات)</h3>
 				<div class="row mt-4">
@@ -101,8 +102,7 @@ $result = mysqli_query($db, $query);
 			</form>
 
 			<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
-			<table id="expenses_table"
-				class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
+			<table id="expenses_table" class="table text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Type</th>
@@ -132,8 +132,7 @@ $result = mysqli_query($db, $query);
 
 		<!-- ==============================Lender Data===================================== -->
 
-		<div
-			class="bg-info p-2  bg-gradient mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div class="p-2 border mb-1 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
@@ -165,7 +164,7 @@ $result = mysqli_query($db, $query);
  
 			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
 			<table id="lender_table"
-				class="m-auto table-bordered border-dark table text-center table-sm table-borderless table-striped table-hover mt-4 ">
+				class="table text-center  mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -213,8 +212,7 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Borrower Data============================ -->
 
-		<div
-			class="bg-info p-2  bg-gradient mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div class="border p-2 mb-1 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(ادھار لینا)</h3>
@@ -247,7 +245,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
 			<table
-				class="m-auto table text-center table-bordered border-dark table-sm table-borderless table-striped table-hover mt-4">
+				class="table text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -298,8 +296,7 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Investment Data============================ -->
 
-		<div
-			class="bg-info p-2  bg-gradient mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div class="border p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment(سرمایہ کاری)</h3>
@@ -325,7 +322,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
 
-			<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
+			<table class="table text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>
@@ -361,9 +358,7 @@ $result = mysqli_query($db, $query);
 		<!-- ====================Income Data============================ -->
 
 
-		<div
-			class="bg-info p-2  bg-gradient mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+		<div class="border p-2 mb-1 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Income(آمدنی)</h3>
@@ -389,7 +384,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
 
-			<table class="table text-center table-bordered border-dark table-striped table-hover mt-4">
+			<table class="table text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>
@@ -420,65 +415,14 @@ $result = mysqli_query($db, $query);
 				<?php echo $inc_ans;?>
 			</h3>
 		</div>
-
-		
-		<div class="col-lg-10 col-md-10 col-sm-11 col-xs-11 m-auto">
-				<h3 class="text-center">Lender Data</h3>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 col-12 mb-2 mb-md-2 mb-sm-2">
-						<input type="text" name="from_date" id="from_date" class="form-control"
-							placeholder="From Date" />
-					</div>
-					<div class="col-3 col-lg-5 col-md-5 col-sm-12 mb-md-2 mb-sm-2 mb-2 col-12">
-						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
-					</div>
-					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
-					</div>
-					<div style="clear:both"></div>                 
-				</div>
-				<div id="lender_table">  
-                     <table class="table table-bordered">  
-                          <tr>  
-                               <th width="4%">ID</th>  
-                               <th width="10%">Name</th>  
-                               <th width="10%">Amount</th>  
-                               <th width="10%">Description</th>  
-                               <th width="12%">Current Date</th>  
-                               <th width="12%">Return Date</th>  
-                          </tr>  
-                     <?php  
-                     while($row = mysqli_fetch_array($result))  
-                     {  
-                     ?>  
-                          <tr>  
-                               <td><?php echo $row["l_id"]; ?></td>  
-                               <td><?php echo $row["l_name"]; ?></td>  
-                               <td><?php echo $row["l_amont"]; ?></td>  
-                               <td><?php echo $row["l_desc"]; ?></td>  
-                               <td><?php echo $row["l_cdate"]; ?></td>  
-                               <td><?php echo $row["l_rdate"]; ?></td>  
-                          </tr>  
-                     <?php  
-                     }  
-                     ?>  
-                     </table>  
-                </div>  
-		</div>
-		
-
-
+ 
 	</div>
-
-
-
+ 
 </body>
 
 </html>
 
-
-
-
+ 
 <!-- ================================categories change jquery -->
 <script>
 	$(document).ready(function () {

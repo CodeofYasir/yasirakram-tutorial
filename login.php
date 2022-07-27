@@ -5,16 +5,17 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
 	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	
 	<title>Manage Khata</title>
 </head>
-<body style="background-image: url('assest/img2.jpg')">
+<body >
 	
 	<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-			<form id="loginform" class="forms border col-lg-4 col-md-5 col-sm-8 col-10 bg-info rounded-3 bg-gradient pt-5 pb-5 px-3 py-3 " method="post" action="login.php">
+			<form id="loginform" class="forms border col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3 " method="post" action="login.php">
 				<h3 class="text-center">Login</h3>
 				<div class="form-wrapper">
 					<label>Username</label>
