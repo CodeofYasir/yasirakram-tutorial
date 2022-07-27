@@ -40,7 +40,7 @@ if (isset($_POST['reg_user'])) {
   $user = mysqli_fetch_assoc($result); 
    
   if ($user) { // if user exists
-    if ($user['username'] === $username) {
+    if ($user['username'] === $username ) {
       array_push($errors, "Username already exists");
     }
 
@@ -90,6 +90,21 @@ if (isset($_POST['login_user'])) {
     $u_id = $i['user_id'];
   }
  
+
+  
+if (!isset($_SESSION['username'])) {
+	  $_SESSION['msg'] = "You must log in first";
+	  
+  	header('location: login.php');
+}
+if (isset($_GET['logout'])) {
+	session_destroy();
+	unset($_SESSION['username']);
+	header("location: login.php");
+}
+$query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
+$result = mysqli_query($db, $query);
+
 		 
   //============================= Submit Lender Data============================//
     if (isset($_POST['lender_data'])) {

@@ -1,38 +1,25 @@
-<?php include('server.php') ?>
-<?php  
-  if (!isset($_SESSION['username'])) {
-	  $_SESSION['msg'] = "You must log in first";
-	  
-  	header('location: login.php');
-}
-if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['username']);
-	header("location: login.php");
-}
-$query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
-$result = mysqli_query($db, $query);
-?>
+
 <!DOCTYPE html>
 <html>
-
-<head>
-	<meta charset="utf-8">
-	<title>Manage Khata</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--Jquery  -->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+	
+	<head>
+		<meta charset="utf-8">
+		<title>Manage Khata</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!--Jquery  -->
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	    <!-- bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-</head>
+		<?php include('server.php') ?>
+	</head>
 
 <body style="background-image: url('assest/img2.jpg')">
 
-	<div class="col-lg-10 col-md-10 col-12 mt-4 m-auto">
+	<div class="col-lg-10 col-md-10 col-12 m-auto   p-1">
 		<!-- =============================header======================================= -->
 
-		<div class="d-flex justify-content-between align-items-center">
+		<div class="bg-primary p-2 text-light bg-gradient d-flex justify-content-between align-items-center col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-5">
 			<div class="d-flex justify-content-between align-items-center">
 				<?php  if (isset($_SESSION['username'])) : ?>
 				<h4 class="text-uppercase"><?php echo $_SESSION['username'];?></h4>
@@ -45,17 +32,17 @@ $result = mysqli_query($db, $query);
 					</strong>
 				</small>
 			</div>
-			<h3><a href="index.php?logout='1'" class=" f-md text-decoration-none text-dark text-uppercase">logout</a>
+			<h3><a href="index.php?logout='1'" class=" f-md text-decoration-none text-light text-uppercase">logout</a>
 			</h3>
 			<?php endif ?>
 		</div>
 
 		<!-- =============================Categories======================================= -->
 
-		<div class="mw-md-auto my-3">
+		<div class="bg-info bg-gradien col-lg-10 p-2 col-md-10 col-sm-10 col-xs-10 m-auto mt-1">
 			<div class="dropdown text-center">
 				<h3>Enter Data</h3>
-				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+				<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
 					aria-expanded="false">
 					-- Select Category --
 				</button>
@@ -69,7 +56,7 @@ $result = mysqli_query($db, $query);
 		</div>
 		<!-- ==============================Lender Data===================================== -->
 
-		<div class="mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
+		<div class="bg-info p-2  bg-gradient mb-5 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
@@ -95,7 +82,7 @@ $result = mysqli_query($db, $query);
 					</div>
 				</div>
 				<button type="submit" name="lender_data"
-					class="btn btn-secondary mt-4 d-flex align-item-center m-auto ">Submit</button>
+					class="btn btn-dark mt-4 d-flex align-item-center m-auto ">Submit</button>
 			</form>
 
 
@@ -111,7 +98,7 @@ $result = mysqli_query($db, $query);
 						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
 					</div>
 					<div class="col-4 col-lg-2 col-md-4 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-info w-100" />
+						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
 					</div>
 				</div>
 			</div>
@@ -164,7 +151,7 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Borrower Data============================ -->
 
-		<div class="mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
+		<div class="bg-info p-2  bg-gradient mb-5 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(Udhaar Layna)</h3>
@@ -189,7 +176,7 @@ $result = mysqli_query($db, $query);
 						<input type="date" name="b_rdate" class="form-control">
 					</div>
 				</div>
-				<button name="borrow_data" class="btn btn-secondary mt-4 d-flex align-item-center m-auto "
+				<button name="borrow_data" class="btn btn-dark mt-4 d-flex align-item-center m-auto "
 					type="submit">Submit</button>
 			</form>
 
@@ -205,7 +192,7 @@ $result = mysqli_query($db, $query);
 						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
 					</div>
 					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-info w-100" />
+						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
 					</div>
 				</div>
 			</div>
@@ -261,7 +248,7 @@ $result = mysqli_query($db, $query);
 
 		<!-- ====================Investment Data============================ -->
 
-		<div class="mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
+		<div class="bg-info p-2  bg-gradient mb-5 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment</h3>
@@ -278,7 +265,7 @@ $result = mysqli_query($db, $query);
 					placeholder="Description"></textarea>
 				<label for="">Current date</label>
 				<input type="date" name="i_cdate" class="form-control">
-				<button class="btn btn-secondary mt-4 d-flex align-item-center m-auto " type="submit"
+				<button class="btn btn-dark mt-4 d-flex align-item-center m-auto " type="submit"
 					name="investment_data">Submit</button>
 			</form>
 
@@ -294,7 +281,7 @@ $result = mysqli_query($db, $query);
 						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
 					</div>
 					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-info w-100" />
+						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
 					</div>
 				</div>
 			</div>
@@ -336,7 +323,7 @@ $result = mysqli_query($db, $query);
 		<!-- ====================Income Data============================ -->
 
 
-		<div class="mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-4 m-auto overflow-hidden">
+		<div class="bg-info p-2  bg-gradient mb-5 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
@@ -354,7 +341,7 @@ $result = mysqli_query($db, $query);
 					placeholder="Description"></textarea>
 				<label for="">Current date</label>
 				<input type="date" name="inc_cdate" class="form-control">
-				<button name="income_data" class="btn btn-secondary mt-4 d-flex align-item-center m-auto "
+				<button name="income_data" class="btn btn-dark mt-4 d-flex align-item-center m-auto "
 					type="submit">Submit</button>
 			</form>
 
@@ -371,7 +358,7 @@ $result = mysqli_query($db, $query);
 						<input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
 					</div>
 					<div class="col-4 col-lg-2 col-md-2 col-sm-4 col-xs-4">
-						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-info w-100" />
+						<input type="button" name="filter" id="filter" value="Filter" class="btn btn-dark w-100" />
 					</div>
 				</div>
 			</div>
