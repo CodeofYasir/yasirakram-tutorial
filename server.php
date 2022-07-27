@@ -2,20 +2,20 @@
 session_start();
 
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-$db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+// $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $cleardb_server = $cleardb_url["host"];
+// $cleardb_username = $cleardb_url["user"];
+// $cleardb_password = $cleardb_url["pass"];
+// $cleardb_db = substr($cleardb_url["path"],1);
+// $active_group = 'default';
+// $query_builder = TRUE;
+// $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 
 
-// $username = "";
-// $email    = "";
-// $db = mysqli_connect('localhost', 'root', '', 'khata');
+$username = "";
+$email    = "";
+$db = mysqli_connect('localhost', 'root', '', 'khata');
 
 
 
@@ -57,7 +57,7 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
-  	header('location: index.php');
+  	header('location: login.php');
   }
 }
  
@@ -90,10 +90,34 @@ if (isset($_POST['login_user'])) {
     $u_id = $i['user_id'];
   }
  
+    //============================= Submit Expenses Data============================//
+    if (isset($_POST['expenses_data'])) {
+      $e_name = mysqli_real_escape_string($db, $_POST['e_name']);
+      $e_amount = mysqli_real_escape_string($db, $_POST['e_amount']);
+      $e_desc = mysqli_real_escape_string($db, $_POST['e_desc']);
+      
+      if (empty($e_name)) {array_push($errors, "Name is required");}
+      if (empty($e_amount)) {array_push($errors, "Amount is required");}
+      if (empty($e_desc)) {array_push($errors, "Description is required");}
+        
+      if (count($errors) == 0) {
+        $q= "INSERT INTO expenses(u_id,e_name,e_amont,e_desc) 
+        VALUES('$u_id','$e_name','$e_amount','$e_desc')";
+        mysqli_query($db, $q);
+        $_SESSION['e_name'] = $e_name;
+        header('location: index.php');
+      }
+    } 
+    $e_query = "SELECT SUM(e_amont) AS sum FROM `expenses` WHERE u_id = '$u_id'";
+    $result = mysqli_query($db, $e_query);
+    while ($e = mysqli_fetch_assoc($result)) {
+      $total_exp= $e['sum'] + 0;
+      $e_ans = "Expenses Total Amount is: "."". $total_exp;
+    }
 
 		 
   //============================= Submit Lender Data============================//
-    if (isset($_POST['lender_data'])) {
+  if (isset($_POST['lender_data'])) {
     $l_name = mysqli_real_escape_string($db, $_POST['l_name']);
     $l_amount = mysqli_real_escape_string($db, $_POST['l_amount']);
     $l_desc = mysqli_real_escape_string($db, $_POST['l_desc']);
@@ -129,6 +153,8 @@ if (isset($_POST['login_user'])) {
 
 // ==============lender filter
 if(isset($_POST["from_date"], $_POST["to_date"]))  
+
+
  {  
       $db = mysqli_connect('localhost', 'root', '', 'khata');        
       $output = '';  
@@ -184,10 +210,13 @@ if(isset($_POST["from_date"], $_POST["to_date"]))
       }  
       $output .= '</table>';  
       echo $output;  
- }
+}
 
 
-  //============================= submit data for borrow===============================//
+
+
+ //============================= submit data for borrow===============================//
+
    if (isset($_POST['borrow_data'])) {
     $b_name = mysqli_real_escape_string($db, $_POST['b_name']);
     $b_amount = mysqli_real_escape_string($db, $_POST['b_amont']);
@@ -221,6 +250,8 @@ if(isset($_POST["from_date"], $_POST["to_date"]))
     mysqli_query($db, "DELETE FROM borrow WHERE `b_id`='$b_id'");
     header('location: index.php');
 }
+
+
 
   // submit data for investment
     if (isset($_POST['investment_data'])) {
