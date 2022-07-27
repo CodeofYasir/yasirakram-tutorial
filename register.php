@@ -49,7 +49,7 @@
 			</p>
 			<div class="form-wrapper mt-4">
 				<div class=" d-grid col-4 mx-auto">
-					<button type="submit" id="submit" class="btn bg-dark text-white" name="reg_user">Register</button>
+					<button type="submit" id="submit" class="btn" name="reg_user">Register</button>
 				</div>
 			</div>
 			<div id="success" style="color:red;"></div>

@@ -33,7 +33,7 @@
 				</p>
 				<div class="form-wrapper">
 					<div class=" d-grid col-4 mx-auto">
-					<button type="submit" id="submit" class="btn bg-dark text-white" name="login_user">Login</button>
+					<button type="submit" id="submit" class="btn" name="login_user">Login</button>
 					</div>
 				</div>
 				
