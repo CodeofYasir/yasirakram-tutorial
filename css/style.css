@@ -30,9 +30,12 @@ p {
     color: whitesmoke !important;
 }
 
-li a:hover,
-ul {
+li a:hover {
     color: #002D62 !important;
+}
+
+#bg {
+    background: #023774 !important;
 }
 
 table,

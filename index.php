@@ -69,7 +69,7 @@ $result = mysqli_query($db, $query);
 					aria-expanded="false">
 					-- Select Category --
 				</button>
-				<ul class="dropdown-menu border bg-transparent">
+				<ul id="bg" class="dropdown-menu border bg-gradient bg-transparent">
 					<li><a class="0 dropdown-item" href="#">Expenses</a></li>
 					<li><a class="1 dropdown-item" href="#">To Lend</a></li>
 					<li><a class="2 dropdown-item" href="#">Borrow</a></li>
