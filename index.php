@@ -185,7 +185,7 @@ $result = mysqli_query($db, $query);
 						<th class="p-0 m-0">Desc</th>
 						<th class="p-0 m-0">Current Date</th>
 						<th class="p-0 m-0">Return Date</th>
-						<th colspan="2" class="p-0 m-0">Action</th>
+						<th class="p-0 m-0">Action</th>
 					</tr>
 				</thead>
 				<?php while ($row = mysqli_fetch_array($results)) { ?>
@@ -209,7 +209,11 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
 							<span class="badge text-bg-success">received</span>
 						</a>
-						 
+						<a class="text-decoration-none" href="" data-bs-toggle="tooltip" data-bs-placement="top"
+							data-bs-custom-class="custom-tooltip color-light"
+							data-bs-title="If you know that you will never get this money">
+							<span class="badge text-bg-warning">not received</span>
+						</a>
 					</td>
 				</tr>
 				<?php } ?>
@@ -220,7 +224,7 @@ $result = mysqli_query($db, $query);
 		</div>
 		<script>
 	$(document).ready( function () {
-		// $('#lender_table').DataTable();	 
+		$('#lender_table').DataTable();	 
     });
  </script>
 		<!-- ====================Borrower Data============================ -->
@@ -266,7 +270,7 @@ $result = mysqli_query($db, $query);
 						<th class="p-0 m-0">desc</th>
 						<th class="p-0 m-0">Current Date</th>
 						<th class="p-0 m-0">Return Date</th>
-						<th class="p-0 m-0" colspan="2">Action</th>
+						<th class="p-0 m-0">Action</th>
 					</tr>
 				</thead>
 				<?php while ($row = mysqli_fetch_array($results)) { ?>
@@ -290,6 +294,10 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
 							<span class="badge text-bg-success">return</span>
 						</a>
+						<a class="text-decoration-none" href="#">
+							<span class="badge text-bg-warning">not return</span>
+						</a>
+
 					</td>
 				</tr>
 				<?php } ?>
@@ -304,7 +312,7 @@ $result = mysqli_query($db, $query);
 		</div>
 		<script>
 	$(document).ready( function () {
-		// $('#borrow_table').DataTable();	 
+		$('#borrow_table').DataTable();	 
     });
  </script>
 		<!-- ====================Investment Data============================ -->
