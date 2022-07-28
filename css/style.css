@@ -10,10 +10,14 @@ body {
 
 }
 
+.size {
+    max-width: 1150px;
+}
+
 form input,
 textarea,
 button {
-    color: whitesmoke !important;
+    color: lightgray !important;
     background: #023774 !important;
     padding-left: 0.5rem !important;
 }
@@ -29,7 +33,7 @@ h3,
 h4,
 a,
 p {
-    color: whitesmoke !important;
+    color: lightgray !important;
 }
 
 li a:hover {
@@ -47,5 +51,5 @@ li a:hover {
 table,
 th,
 td {
-    color: whitesmoke !important;
+    color: lightgray !important;
 }

@@ -38,7 +38,7 @@ $result = mysqli_query($db, $query);
 
 <body>
 
-	<div class="col-lg-10 col-md-10 col-12 m-auto  p-1">
+	<div class="size col-lg-10 col-md-10 col-12 m-auto  p-1">
 		<!-- =============================header======================================= -->
 
 		<div class="bg1 text-light p-2 align-items-center d-flex justify-content-between col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-2">
@@ -55,7 +55,7 @@ $result = mysqli_query($db, $query);
 				</small>
 			</div>
 			<div class="d-flex justify-content-center align-items-center">
-				<a href="index.php?logout='1'" class="btn  text-decoration-none text-light text-uppercase">logout</a>
+			<a href="index.php?logout='1'" class="btn text-decoration-none text-light text-uppercase">logout</a>
 			</div>
 			<?php endif ?>
 		</div>
@@ -69,7 +69,7 @@ $result = mysqli_query($db, $query);
 					aria-expanded="false">
 					-- Select Category --
 				</button>
-				<ul id="bg" class="dropdown-menu border bg-gradient bg-transparent">
+				<ul id="bg" class="dropdown-menu">
 					<li><a class="0 dropdown-item" href="#">Expenses</a></li>
 					<li><a class="1 dropdown-item" href="#">To Lend</a></li>
 					<li><a class="2 dropdown-item" href="#">Borrow</a></li>
@@ -103,7 +103,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Expenses Data</h3>
-			<table id="expenses_table" class="table table-striped table-dark text-center mt-4">
+			<table id="expenses_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead class="bg-info">
 					<tr>
 						<th class="p-0 m-0">Type</th>
@@ -166,7 +166,7 @@ $result = mysqli_query($db, $query);
 			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Lender Data</h3>
 			<table id="lender_table"
-				class="table text-center  mt-4">
+				class="table table-striped table-bordered table-dark text-center  mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -248,7 +248,7 @@ $result = mysqli_query($db, $query);
 			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Borrower Data</h3>
 			<table
-				class="table text-center mt-4">
+				class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -326,7 +326,7 @@ $result = mysqli_query($db, $query);
 			<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Investment Data</h3>
 
-			<table class="table text-center mt-4">
+			<table class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>
@@ -386,7 +386,7 @@ $result = mysqli_query($db, $query);
  
 			<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Income Data</h3>
-			<table class="table table-striped text-center mt-4">
+			<table class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>

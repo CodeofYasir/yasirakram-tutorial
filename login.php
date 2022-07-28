@@ -15,25 +15,25 @@
 <body >
 	
 	<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-			<form id="loginform" class="forms border col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3 " method="post" action="login.php">
-				<h3 class="text-center">Login</h3>
+			<form id="loginform" class="forms bg1 col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3 " method="post" action="login.php">
+				<h3 class="text-center text-uppercase">Login</h3>
 				<div class="form-wrapper">
 					<label>Username</label>
 					<input type="text" id="name" name="username" class="form-control" placeholder="User Name">
 					<span class="form_error">Please enter username</span>
 				</div>
-				<div class="form-wrapper mt-4">
+				<div class="form-wrapper mt-2">
 					<label>Password</label>
 					<input type="password" id="password_1" name="password" placeholder="Password" class="form-control">
 					<span class="form_error">Please enter your password</span>
 				</div>
-				<p class="text-center mt-4">
+				<p class="text-center mt-2">
 					Not yet a member? <a href="register.php">Sign up</a>
 					<?php include('errors.php'); ?>
 				</p>
-				<div class="form-wrapper">
+				<div class="form-wrapper ">
 					<div class=" d-grid col-4 mx-auto">
-					<button type="submit" id="submit" class="btn" name="login_user">Login</button>
+					<button type="submit" id="submit" class="btn text-uppercase" name="login_user">Login</button>
 					</div>
 				</div>
 				

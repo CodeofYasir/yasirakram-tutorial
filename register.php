@@ -18,38 +18,38 @@
 	<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
 
 		<form method="post" id="contactform" action="register.php"
-			class="forms border col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3">
-			<h3 class="text-center">Register</h3>
+			class="forms bg1 col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3">
+			<h3 class="text-center text-uppercase">Sign up</h3>
 
-			<div class="form-wrapper mt-4">
+			<div class="form-wrapper mt-2">
 				<label>Username</label>
 				<input type="text" id="name" name="username" class="form-control" placeholder="User Name">
 				<span class="form_error">Please enter username</span>
 			</div>
-			<div class="form-wrapper mt-4">
+			<div class="form-wrapper mt-2">
 				<label>Email</label>
 				<input type="email" id="email" name="email" class="form-control" placeholder="Email">
 				<span class="form_error">Please enter your email</span>
 				<span class="form_error" id="invalid_email">This email is not valid</span>
 			</div>
-			<div class="form-wrapper mt-4">
+			<div class="form-wrapper mt-2">
 				<label>Password</label>
 				<input type="password" id="password_1" name="password_1" class="form-control" placeholder="Password">
 				<span class="form_error">Please enter your password</span>
 			</div>
-			<div class="form-wrapper mt-4">
+			<div class="form-wrapper mt-2">
 				<label>Confirm password</label>
 				<input type="password" name="password_2" id="password_2" class="form-control"
 					placeholder="Confirm Password">
 				<span class="form_error">Please enter your password</span>
 			</div>
-			<p class="text-center mt-4">
+			<p class="text-center mt-2">
 				<?php include('errors.php'); ?>
-				Already a member? <a href="login.php">Sign in</a>
+				Already a member? <a href="login.php"  >Sign in</a>
 			</p>
-			<div class="form-wrapper mt-4">
+			<div class="form-wrapper mt-2">
 				<div class=" d-grid col-4 mx-auto">
-					<button type="submit" id="submit" class="btn" name="reg_user">Register</button>
+					<button type="submit" id="submit" class="btn text-uppercase" name="reg_user">sign up</button>
 				</div>
 			</div>
 			<div id="success" style="color:red;"></div>
