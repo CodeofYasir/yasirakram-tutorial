@@ -123,9 +123,16 @@ select {
     h4,
     h3,
     h5,
+    input,
+    button,
+    input::placeholder,
+    textarea::placeholder {
+        font-size: 0.9rem !important;
+    }
+
     tr,
     th,
     td {
-        font-size: 0.9rem !important;
+        font-size: 0.6rem !important;
     }
 }
