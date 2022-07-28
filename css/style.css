@@ -1,5 +1,5 @@
 * {
-    border: none !important;
+
     outline: none !important;
     background-clip: none !important;
 }
@@ -52,4 +52,17 @@ table,
 th,
 td {
     color: lightgray !important;
+}
+
+.sorting_1 {
+    background-color: black !important;
+}
+
+.dataTables_filter {
+    float: none !important;
+}
+
+.dataTables_info,
+.dataTables_paginate {
+    display: none !important;
 }

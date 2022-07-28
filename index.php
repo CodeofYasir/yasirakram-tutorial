@@ -34,6 +34,14 @@ $result = mysqli_query($db, $query);
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
+		
+		<!-- Data table -->
+        <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+		
+ 
+
 </head>
 
 <body>
@@ -103,7 +111,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Expenses Data</h3>
-			<table id="expenses_table" class="table table-striped table-bordered table-dark text-center mt-4">
+			<table id="expenses_table"  class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead class="bg-info">
 					<tr>
 						<th class="p-0 m-0">Type</th>
@@ -130,7 +138,11 @@ $result = mysqli_query($db, $query);
 				<?php echo $e_ans;?>
 			</h3>
 		</div>
-
+		<script>
+	$(document).ready( function () {
+		$('#expenses_table').DataTable();	 
+    });
+ </script>
 		<!-- ==============================Lender Data===================================== -->
 
 		<div class="p-2 bg1 mb-1 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
@@ -165,8 +177,7 @@ $result = mysqli_query($db, $query);
  
 			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Lender Data</h3>
-			<table id="lender_table"
-				class="table table-striped table-bordered table-dark text-center  mt-4">
+			<table id="lender_table"  class="table display table-striped table-bordered table-dark text-center  mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -198,11 +209,7 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
 							<span class="badge text-bg-success">received</span>
 						</a>
-						<a class="text-decoration-none" href="" data-bs-toggle="tooltip" data-bs-placement="top"
-							data-bs-custom-class="custom-tooltip color-light"
-							data-bs-title="If you know that you will never get this money">
-							<span class="badge text-bg-warning">not received</span>
-						</a>
+						 
 					</td>
 				</tr>
 				<?php } ?>
@@ -211,7 +218,11 @@ $result = mysqli_query($db, $query);
 				<?php echo $l_ans;?>
 			</h3>
 		</div>
-
+		<script>
+	$(document).ready( function () {
+		// $('#lender_table').DataTable();	 
+    });
+ </script>
 		<!-- ====================Borrower Data============================ -->
 
 		<div class="bg1 p-2 mb-1 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
@@ -247,8 +258,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Borrower Data</h3>
-			<table
-				class="table table-striped table-bordered table-dark text-center mt-4">
+			<table id="borrow_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -280,10 +290,6 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
 							<span class="badge text-bg-success">return</span>
 						</a>
-						<a class="text-decoration-none" href="#">
-							<span class="badge text-bg-warning">not return</span>
-						</a>
-
 					</td>
 				</tr>
 				<?php } ?>
@@ -296,7 +302,11 @@ $result = mysqli_query($db, $query);
 
 
 		</div>
-
+		<script>
+	$(document).ready( function () {
+		// $('#borrow_table').DataTable();	 
+    });
+ </script>
 		<!-- ====================Investment Data============================ -->
 
 		<div class="bg1 p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
@@ -326,7 +336,7 @@ $result = mysqli_query($db, $query);
 			<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Investment Data</h3>
 
-			<table class="table table-striped table-bordered table-dark text-center mt-4">
+			<table id="investment_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>
@@ -358,7 +368,11 @@ $result = mysqli_query($db, $query);
 			</h3>
 
 		</div>
-
+		<script>
+	$(document).ready( function () {
+		$('#investment_table').DataTable();	 
+    });
+ </script>
 		<!-- ====================Income Data============================ -->
 
 
@@ -386,7 +400,7 @@ $result = mysqli_query($db, $query);
  
 			<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Income Data</h3>
-			<table class="table table-striped table-bordered table-dark text-center mt-4">
+			<table id="income_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Category/Type</th>
@@ -417,7 +431,12 @@ $result = mysqli_query($db, $query);
 				<?php echo $inc_ans;?>
 			</h3>
 		</div>
- 
+		<script>
+	$(document).ready( function () {
+		  
+		$('#income_table').DataTable();	 
+});
+ </script>
 	</div>
  
 </body>
@@ -462,33 +481,3 @@ $result = mysqli_query($db, $query);
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 
-<script>
-	$(document).ready(function () {
-		$.datepicker.setDefaults({
-			dateFormat: 'yy-mm-dd'
-		});
-		$(function () {
-			$("#from_date").datepicker();
-			$("#to_date").datepicker();
-		});
-		$('#filter').click(function () {
-			var from_date = $('#from_date').val();
-			var to_date = $('#to_date').val();
-			if (from_date != '' && to_date != '') {
-				$.ajax({
-					url: "server.php",
-					method: "POST",
-					data: {
-						from_date: from_date,
-						to_date: to_date
-					},
-					success: function (data) {
-						$('#lender_table').html(data);
-					}
-				});
-			} else {
-				alert("Please Select Date");
-			}
-		});
-	});
-</script>
