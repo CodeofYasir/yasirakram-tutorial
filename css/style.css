@@ -110,7 +110,10 @@ select {
 
     h4,
     h3,
-    h5 {
+    h5,
+    tr,
+    th,
+    td {
         font-size: 1.2rem !important;
     }
 }
@@ -119,7 +122,10 @@ select {
 
     h4,
     h3,
-    h5 {
+    h5,
+    tr,
+    th,
+    td {
         font-size: 1rem !important;
     }
 }
