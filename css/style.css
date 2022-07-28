@@ -10,6 +10,12 @@ body {
 
 }
 
+button,
+textarea,
+input {
+    border: 0.1px solid rgb(144, 163, 189) !important;
+}
+
 .size {
     max-width: 1150px;
 }
@@ -52,6 +58,8 @@ table,
 th,
 td {
     color: lightgray !important;
+    box-shadow: none !important;
+
 }
 
 .sorting_1 {
@@ -60,6 +68,20 @@ td {
 
 .dataTables_filter {
     float: none !important;
+}
+
+label input {
+    background: #023774;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    color: lightgrey;
+
+
+}
+
+select {
+    background: #023774;
+    color: lightgray;
 }
 
 .dataTables_info,
@@ -78,5 +100,17 @@ td {
     .dataTables_filter {
         margin: 0 auto !important;
 
+    }
+
+    .sorting,
+    .sorting_asc,
+    .sorting_desc {
+        background: black url('') !important;
+    }
+
+    h4,
+    h3,
+    h5 {
+        font-size: 1.2rem !important;
     }
 }
