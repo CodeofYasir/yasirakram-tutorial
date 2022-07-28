@@ -61,7 +61,7 @@ $result = mysqli_query($db, $query);
 				</h3>
 				<h5 class="text-lowercase">
 					<?php 
-				$total = ($total_inc+$total_borrow)-($total_investment+$total_lend+$total_exp); 
+				$total = ($total_inc+$total_borrow)-($total_investment+$total_lend+$total_exp+ $total_nr+$total_nrt); 
 				  echo "(balance: ".$total.")";
 				?>
 				</h5>
@@ -225,7 +225,7 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
 							<span class="badge text-bg-success">received</span>
 						</a>
-						<a class="text-decoration-none" href="" data-bs-toggle="tooltip" data-bs-placement="top"
+						<a class="text-decoration-none" href="server.php?notreceive_del=<?php echo $row['l_id']; ?>" data-bs-toggle="tooltip" data-bs-placement="top"
 							data-bs-custom-class="custom-tooltip color-light"
 							data-bs-title="If you know that you will never get this money">
 							<span class="badge text-bg-warning">not received</span>
@@ -248,7 +248,7 @@ $result = mysqli_query($db, $query);
 			class="p-2 bg1 mb-1 tables notreceive_table col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 
-			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
+			<?php $results = mysqli_query($db, "SELECT * FROM notreceived WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Lender Amount Not Received</h3>
 			<table id="notreceive_table" class="table display table-striped table-bordered table-dark text-center  mt-4">
 				<thead>
@@ -264,22 +264,22 @@ $result = mysqli_query($db, $query);
 				<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
 					<td class="p-0 m-0">
-						<?php echo $row['l_name']; ?>
+						<?php echo $row['nr_name']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['l_amont']; ?>
+						<?php echo $row['nr_amont']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['l_desc']; ?>
+						<?php echo $row['nr_desc']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['l_cdate']; ?>
+						<?php echo $row['nr_cdate']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['l_rdate']; ?>
+						<?php echo $row['nr_rdate']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
+						<a class="text-decoration-none" href="server.php?del_receive=<?php echo $row['nr_id']; ?>">
 							<span class="badge text-bg-success">received</span>
 						</a>
 						 
@@ -288,7 +288,7 @@ $result = mysqli_query($db, $query);
 				<?php } ?>
 			</table>
 			<h3 class="text-center mt-4">
-				<?php echo $l_ans;?>
+				<?php echo $nr_ans;?>
 			</h3>
 		</div>
 		<script>
@@ -363,7 +363,7 @@ $result = mysqli_query($db, $query);
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
 							<span class="badge text-bg-success">return</span>
 						</a>
-						<a class="text-decoration-none" href="#">
+						<a class="text-decoration-none" href="server.php?notreturn_del=<?php echo $row['b_id']; ?>">
 							<span class="badge text-bg-warning">not return</span>
 						</a>
 
@@ -384,13 +384,13 @@ $result = mysqli_query($db, $query);
 				$('#borrow_table').DataTable();
 			});
 		</script>
-		<!-- ====================Borrower Amount Not Received============================ -->
+		<!-- ====================Borrower Amount Not Return============================ -->
 
 		<div
 			class="bg1 p-2 mb-1 tables notreturn_table col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 
-			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
+			<?php $results = mysqli_query($db, "SELECT * FROM notreturn WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Borrower Amount Not Returned</h3>
 			<table id="notreturn_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
@@ -406,26 +406,25 @@ $result = mysqli_query($db, $query);
 				<?php while ($row = mysqli_fetch_array($results)) { ?>
 				<tr>
 					<td class="p-0 m-0">
-						<?php echo $row['b_name']; ?>
+						<?php echo $row['nrt_name']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['b_amount']; ?>
+						<?php echo $row['nrt_amount']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['b_desc']; ?>
+						<?php echo $row['nrt_desc']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['b_cdate']; ?>
+						<?php echo $row['nrt_cdate']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['b_rdate']; ?>
+						<?php echo $row['nrt_rdate']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
+						<a class="text-decoration-none" href="server.php?del_return=<?php echo $row['nrt_id']; ?>">
 							<span class="badge text-bg-success">return</span>
 						</a>
-						 
-
+			 
 					</td>
 				</tr>
 				<?php } ?>
@@ -433,7 +432,7 @@ $result = mysqli_query($db, $query);
 
 
 			<h3 class="text-center mt-4">
-				<?php echo $b_ans;?>
+				<?php echo $nrt_ans;?>
 			</h3>
 
 

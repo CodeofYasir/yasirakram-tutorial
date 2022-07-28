@@ -154,7 +154,33 @@ if (isset($_POST['lender_data'])) {
     header('location: index.php');
 }
 
+//====================Lender Amount receive or Amount Not Receive===========================
 
+if (isset($_GET['notreceive_del'])) {
+  $l_id = $_GET['notreceive_del'];
+  $sql ="INSERT INTO notreceived (u_id,nr_name,nr_amont,nr_desc,nr_cdate,nr_rdate) SELECT u_id,l_name,l_amont,l_desc,l_cdate,l_rdate FROM lender WHERE l_id = '$l_id';
+  DELETE FROM lender WHERE `l_id`='$l_id'";
+// Execute the queries with multi_query
+if ($db->multi_query($sql) === TRUE) {
+  // echo "Data inserted successfully";
+}
+// else { // The user accessed the script directly
+//   echo "That is not allowed!";
+// }
+header('location: index.php');
+}
+
+if (isset($_GET['del_receive'])) {
+  $nr_id = $_GET['del_receive'];
+  mysqli_query($db, "DELETE FROM notreceived WHERE `nr_id`='$nr_id'");
+  header('location: index.php');
+}
+$nr_query = "SELECT SUM(nr_amont) AS sum FROM `notreceived` WHERE u_id = '$u_id'";
+  $result = mysqli_query($db, $nr_query);
+  while ($nr = mysqli_fetch_assoc($result)) {
+    $total_nr= $nr['sum'] + 0;
+    $nr_ans = "Lender Total Not Received Amount is: "."". $total_nr;
+  }
 
  //============================= submit data for borrow===============================//
 
@@ -191,7 +217,34 @@ if (isset($_POST['lender_data'])) {
     mysqli_query($db, "DELETE FROM borrow WHERE `b_id`='$b_id'");
     header('location: index.php');
 }
+//====================Borrower Amount return or  Not return===========================
+ 
 
+if (isset($_GET['notreturn_del'])) {
+  $b_id = $_GET['notreturn_del'];
+  $sql ="INSERT INTO notreturn (u_id,nrt_name,nrt_amount,nrt_desc,nrt_cdate,nrt_rdate) SELECT u_id,b_name,b_amount,b_desc,b_cdate,b_rdate FROM borrow WHERE b_id = '$b_id';
+  DELETE FROM borrow WHERE `b_id`='$b_id'";
+// Execute the queries with multi_query
+if ($db->multi_query($sql) === TRUE) {
+  // echo "Data inserted successfully";
+}
+// else { // The user accessed the script directly
+//   echo "That is not allowed!";
+// }
+header('location: index.php');
+}
+
+if (isset($_GET['del_return'])) {
+  $nrt_id = $_GET['del_return'];
+  mysqli_query($db, "DELETE FROM notreturn WHERE `nrt_id`='$nrt_id'");
+  header('location: index.php');
+}
+$nrt_query = "SELECT SUM(nrt_amount) AS sum FROM `notreturn` WHERE u_id = '$u_id'";
+  $result = mysqli_query($db, $nrt_query);
+  while ($nrt = mysqli_fetch_assoc($result)) {
+    $total_nrt= $nrt['sum'] + 0;
+    $nrt_ans = "Borrower Total Not Received Amount is: "."". $total_nrt;
+  }
 
 
   // submit data for investment
