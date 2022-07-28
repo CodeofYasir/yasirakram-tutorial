@@ -61,7 +61,7 @@ $result = mysqli_query($db, $query);
 				</h3>
 				<h5 class="text-lowercase">
 					<?php 
-				$total = ($total_inc+$total_borrow)-($total_investment+$total_lend+$total_exp+ $total_nr+$total_nrt); 
+				$total = ($total_inc+$total_borrow+$total_nrt)-($total_investment+$total_lend+$total_exp+ $total_nr);
 				  echo "(balance: ".$total.")";
 				?>
 				</h5>
