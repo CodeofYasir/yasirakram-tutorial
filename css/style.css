@@ -5,7 +5,9 @@
 }
 
 body {
-    background: radial-gradient(#002D62, #0a2351);
+    background: #0043c0 !important;
+    background-repeat: no-repeat;
+
 }
 
 form input,
@@ -36,6 +38,10 @@ li a:hover {
 
 #bg {
     background: #023774 !important;
+}
+
+.bg1 {
+    background: #012169 !important;
 }
 
 table,
