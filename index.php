@@ -25,54 +25,69 @@ $result = mysqli_query($db, $query);
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="./css/style.css">
 	<!-- bootstrap -->
-      	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-		
-		<!-- Data table -->
-        <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.js"></script>
-		<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
-		
- 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+	</script>
+
+	<!-- Data table -->
+	<script type="text/javascript" charset="utf8"
+		src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+
+
 
 </head>
 
 <body>
 
-	<div class="size col-lg-10 col-md-10 col-12 m-auto  p-1">
+	<div class="size col-lg-10 col-md-10 col-12 m-auto p-1">
 		<!-- =============================header======================================= -->
 
-		<div class="bg1 p-2 text-light align-items-center d-flex justify-content-between col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-2">
+		<div
+			class="bg1 p-2 text-light align-items-center d-flex justify-content-between col-lg-10 col-md-10 col-sm-10 col-xs-10 m-auto mt-2">
 			<div class="d-flex justify-content-center align-items-center">
 				<?php  if (isset($_SESSION['username'])) : ?>
 				<h3 class="text-uppercase">
-						<?php echo $_SESSION['username'];?>
+					<?php echo $_SESSION['username'];?>
 				</h3>
 				<h5 class="text-lowercase">
-				<?php 
+					<?php 
 				$total = ($total_inc+$total_borrow)-($total_investment+$total_lend+$total_exp); 
 				  echo "(balance: ".$total.")";
 				?>
 				</h5>
-				</div>
-				<h3>
+			</div>
+			<h3>
 				<a href="index.php?logout='1'" class="text-decoration-none text-light text-uppercase">logout</a>
-				</h3>
+			</h3>
 			<?php endif ?>
 		</div>
 
 		<!-- =============================Categories======================================= -->
 
-		<div class="bg1 col-lg-10 p-2 col-md-10 col-sm-10 col-xs-10 m-auto mt-1">
-			<div class="dropdown text-center">
-				<h3>Enter Data</h3>
+		<div class="row bg1 col-lg-10 p-2 col-md-10 col-sm-10 col-xs-10 m-auto mt-1 pb-3">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-12 dropdown text-center">
+				<h3>Not received/Returned</h3>
+				<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
+					aria-expanded="false">
+					-- Select To See --
+				</button>
+				<ul id="bg" class="dropdown-menu">
+					<li><a class="11 dropdown-item" href="#">Not received</a></li>
+					<li><a class="12 dropdown-item" href="#">Not Returned</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-12 dropdown text-center">
+				<h3>To Enter Data</h3>
 				<button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
 					aria-expanded="false">
 					-- Select Category --
@@ -87,9 +102,10 @@ $result = mysqli_query($db, $query);
 			</div>
 		</div>
 
-	<!-- ==============================Expenses Data===================================== -->
+		<!-- ==============================Expenses Data=================================== -->
 
-		<div class="p-2  bg1 mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="p-2  bg1 mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
@@ -111,7 +127,7 @@ $result = mysqli_query($db, $query);
 
 			<?php $results = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Expenses Data</h3>
-			<table id="expenses_table"  class="table table-striped table-bordered table-dark text-center mt-4">
+			<table id="expenses_table" class="table table-striped table-bordered table-dark text-center mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Type</th>
@@ -133,16 +149,16 @@ $result = mysqli_query($db, $query);
 				</tr>
 				<?php } ?>
 			</table>
-			
+
 			<h3 class="text-center mt-4">
 				<?php echo $e_ans;?>
 			</h3>
 		</div>
 		<script>
-	$(document).ready( function () {
-		$('#expenses_table').DataTable();	 
-    });
- </script>
+			$(document).ready(function () {
+				$('#expenses_table').DataTable();
+			});
+		</script>
 		<!-- ==============================Lender Data===================================== -->
 
 		<div class="p-2 bg1 mb-1 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
@@ -174,10 +190,10 @@ $result = mysqli_query($db, $query);
 					<button type="submit" name="lender_data" class="btn btn-dark mt-4">Submit</button>
 				</div>
 			</form>
- 
+
 			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Lender Data</h3>
-			<table id="lender_table"  class="table display table-striped table-bordered table-dark text-center  mt-4">
+			<table id="lender_table" class="table display table-striped table-bordered table-dark text-center  mt-4">
 				<thead>
 					<tr>
 						<th class="p-0 m-0">Name</th>
@@ -223,10 +239,63 @@ $result = mysqli_query($db, $query);
 			</h3>
 		</div>
 		<script>
-	$(document).ready( function () {
-		$('#lender_table').DataTable();	 
-    });
- </script>
+			$(document).ready(function () {
+				$('#lender_table').DataTable();
+			});
+		</script>
+		<!-- ===================Lender Amount Not Received Data============================ -->
+		<div
+			class="p-2 bg1 mb-1 tables notreceive_table col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+
+
+			<?php $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); ?>
+			<h3 class="text-center mt-4">Lender Amount Not Received</h3>
+			<table id="notreceive_table" class="table display table-striped table-bordered table-dark text-center  mt-4">
+				<thead>
+					<tr>
+						<th class="p-0 m-0">Name</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">Desc</th>
+						<th class="p-0 m-0">Current Date</th>
+						<th class="p-0 m-0">Return Date</th>
+						<th class="p-0 m-0">Action</th>
+					</tr>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['l_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_amont']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_cdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['l_rdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
+							<span class="badge text-bg-success">received</span>
+						</a>
+						 
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
+			<h3 class="text-center mt-4">
+				<?php echo $l_ans;?>
+			</h3>
+		</div>
+		<script>
+			$(document).ready(function () {
+				$('#notreceive_table').DataTable();
+			});
+		</script>
 		<!-- ====================Borrower Data============================ -->
 
 		<div class="bg1 p-2 mb-1 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
@@ -311,13 +380,73 @@ $result = mysqli_query($db, $query);
 
 		</div>
 		<script>
-	$(document).ready( function () {
-		$('#borrow_table').DataTable();	 
-    });
- </script>
-		<!-- ====================Investment Data============================ -->
+			$(document).ready(function () {
+				$('#borrow_table').DataTable();
+			});
+		</script>
+		<!-- ====================Borrower Amount Not Received============================ -->
 
-		<div class="bg1 p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+		<div
+			class="bg1 p-2 mb-1 tables notreturn_table col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
+
+
+			<?php $results = mysqli_query($db, "SELECT * FROM borrow WHERE u_id = '$u_id'"); ?>
+			<h3 class="text-center mt-4">Borrower Amount Not Returned</h3>
+			<table id="notreturn_table" class="table table-striped table-bordered table-dark text-center mt-4">
+				<thead>
+					<tr>
+						<th class="p-0 m-0">Name</th>
+						<th class="p-0 m-0">Amount</th>
+						<th class="p-0 m-0">desc</th>
+						<th class="p-0 m-0">Current Date</th>
+						<th class="p-0 m-0">Return Date</th>
+						<th class="p-0 m-0">Action</th>
+					</tr>
+				</thead>
+				<?php while ($row = mysqli_fetch_array($results)) { ?>
+				<tr>
+					<td class="p-0 m-0">
+						<?php echo $row['b_name']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_amount']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_desc']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_cdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<?php echo $row['b_rdate']; ?>
+					</td>
+					<td class="p-0 m-0">
+						<a class="text-decoration-none" href="server.php?del=<?php echo $row['b_id']; ?>">
+							<span class="badge text-bg-success">return</span>
+						</a>
+						 
+
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
+
+
+			<h3 class="text-center mt-4">
+				<?php echo $b_ans;?>
+			</h3>
+
+
+		</div>
+		<script>
+			$(document).ready(function () {
+				$('#notreturn_table').DataTable();
+			});
+		</script>
+
+		<!-- ====================Investment Data============================ -->
+		<div
+			class="bg1 p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
 			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment(سرمایہ کاری)</h3>
@@ -339,7 +468,7 @@ $result = mysqli_query($db, $query);
 				</div>
 			</form>
 
-			 
+
 
 			<?php $results = mysqli_query($db, "SELECT * FROM investment WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Investment Data</h3>
@@ -377,10 +506,10 @@ $result = mysqli_query($db, $query);
 
 		</div>
 		<script>
-	$(document).ready( function () {
-		$('#investment_table').DataTable();	 
-    });
- </script>
+			$(document).ready(function () {
+				$('#investment_table').DataTable();
+			});
+		</script>
 		<!-- ====================Income Data============================ -->
 
 
@@ -405,7 +534,7 @@ $result = mysqli_query($db, $query);
 					<button name="income_data" class="btn btn-dark mt-4" type="submit">Submit</button>
 				</div>
 			</form>
- 
+
 			<?php $results = mysqli_query($db, "SELECT * FROM income WHERE u_id = '$u_id'"); ?>
 			<h3 class="text-center mt-4">Income Data</h3>
 			<table id="income_table" class="table table-striped table-bordered table-dark text-center mt-4">
@@ -440,46 +569,55 @@ $result = mysqli_query($db, $query);
 			</h3>
 		</div>
 		<script>
-	$(document).ready( function () {
-		  
-		$('#income_table').DataTable();	 
-});
- </script>
+			$(document).ready(function () {
+
+				$('#income_table').DataTable();
+			});
+		</script>
 	</div>
- 
+
 </body>
 
 </html>
 
- 
+
 <!-- ================================categories change jquery -->
 <script>
 	$(document).ready(function () {
 		$(".forms").css("display", "none");
-
+		$(".tables").css("display", "none");
+		$(".expenses-form").css("display", "block");
 		$('.0').click(function () {
-			$(".forms").css("display", "none");
+			$(".forms,.tables").css("display", "none");
 			$(".expenses-form").css("display", "block");
 		});
 
 		$('.1').click(function () {
-			$(".forms").css("display", "none");
+			$(".forms,.tables").css("display", "none");
 			$(".lender-form").css("display", "block");
 		});
 
 		$('.2').click(function () {
-			$(".forms").css("display", "none");
+			$(".forms,.tables").css("display", "none");
 			$(".borrow-form").css("display", "block");
 		});
 
 		$('.3').click(function () {
-			$(".forms").css("display", "none");
+			$(".forms,.tables").css("display", "none");
 			$(".investment-form").css("display", "block");
 		});
 
 		$('.4').click(function () {
-			$(".forms").css("display", "none");
+			$(".forms,.tables").css("display", "none");
 			$(".income-form").css("display", "block");
+		});
+		$('.11').click(function () {
+			$(".forms,.tables").css("display", "none");
+			$(".notreceive_table").css("display", "block");
+		});
+		$('.12').click(function () {
+			$(".forms,.tables").css("display", "none");
+			$(".notreturn_table").css("display", "block");
 		});
 	});
 </script>
@@ -488,4 +626,3 @@ $result = mysqli_query($db, $query);
 	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
-

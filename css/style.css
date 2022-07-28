@@ -63,7 +63,7 @@ td {
 }
 
 .sorting_1 {
-    background-color: black !important;
+    background-color: rgb(14, 21, 27) !important;
 }
 
 .dataTables_filter {
@@ -114,6 +114,12 @@ select {
     tr,
     th,
     td {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media screen and (max-width:880px) {
+    h3 {
         font-size: 1.2rem !important;
     }
 }
