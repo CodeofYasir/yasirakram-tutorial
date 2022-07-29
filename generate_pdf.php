@@ -7,7 +7,7 @@
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',16);
         $pdf->setTextColor(252, 3, 3);
-        $pdf->Cell(200,20,'Employe Management System',0,1,'C');
+        $pdf->Cell(175,20,'Expenses Data',0,1,'C');
         $pdf->setLeftMargin(30);
         $pdf->setTextColor(0, 0, 0);
 
@@ -22,7 +22,7 @@
         $pdf->SetFont('Arial','',14);
         
         // $con = new PDO("mysql:host = localhost;dbname=khata","root","");
-        // $con = new PDO("mysql:host = $cleardb_server;dbname=$cleardb_db","$cleardb_username","$cleardb_password");
+        $con = new PDO("mysql:host = eu-cdbr-west-03.cleardb.net;dbname=b699f891650808","user","4e255833");
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
         $result = $con->prepare($query);
