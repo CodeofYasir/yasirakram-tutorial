@@ -20,16 +20,16 @@
 				<div class="form-wrapper">
 					<label>Username</label>
 					<input type="text" id="name" name="username" class="form-control" placeholder="User Name">
-					<span class="form_error">Please enter username</span>
+					 
 				</div>
 				<div class="form-wrapper mt-2">
 					<label>Password</label>
 					<input type="password" id="password_1" name="password" placeholder="Password" class="form-control">
-					<span class="form_error">Please enter your password</span>
+					 
 				</div>
+				<p class="text-center error"><?php include('errors.php'); ?></p>
 				<p class="text-center mt-2">
 					Not yet a member? <a href="register.php">Sign up</a>
-					<?php include('errors.php'); ?>
 				</p>
 				<div class="form-wrapper ">
 					<div class=" d-grid col-4 mx-auto">
@@ -46,42 +46,40 @@
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous">
 </script>
+	
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 <script>
-	$(document).ready(function(){
-
-		  $('.form_error').hide();
-		  $('#submit').click(function(){
-			   var name = $('#name').val();
-			   var password_1 = $('#password_1').val();
-			   var message = $('#message').val();
-			   if(name== ''){
-				  $('#name').next().show();
-				  return false;
-				}
-				if(password_1== ''){
-					$('#password_1').next().show();
-					return false;
-				}
-				if(message== ''){
-					$('#message').next().show();
-					return false;
-				}
-				//ajax call php page
-				$.post("index.php", $("#loginform").serialize(),  function(response) {
-				$('#loginform').fadeOut('slow',function(){
-					$('#success').html(response);
-					$('#success').fadeIn('slow');
-				 });
-				 return false;
-			  });
-		  });
-	});
+	$.validator.addMethod("noSpace",function(value,element){
+		return value == '' || value.trim().length != 0 
+	}, "Spaces are not allowed");
 	
-	 
-  </script> 
-
-
+      $('#loginform').validate({
+        rules: {
+            username: {
+				required:true,
+				noSpace: true
+			},
+            password: {
+                required: true,
+            }
+        },
+		messages: {
+            username: {
+				required:"username is required!"
+			},
+            password: {
+                required: "password is required!",
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+	
+</script>
 </body>
 
 </html>

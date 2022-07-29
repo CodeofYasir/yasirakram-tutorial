@@ -29,6 +29,7 @@ if (isset($_POST['reg_user'])) {
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
+  
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }

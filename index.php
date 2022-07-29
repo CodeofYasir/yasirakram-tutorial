@@ -106,7 +106,7 @@ $result = mysqli_query($db, $query);
 		<div
 			class="p-2  bg1 mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form id="e-form" method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">Expenses(اخراجات)</h3>
 				<div class="row mt-4">
@@ -162,7 +162,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="p-2 bg1 mb-1 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form method="post" id="l-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">To Lend(ادھار دینا)</h3>
 				<div class="row mt-4">
@@ -299,7 +299,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="bg1 p-2 mb-1 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form id="b-form" method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(ادھار لینا)</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -433,8 +433,7 @@ $result = mysqli_query($db, $query);
 			<h3 class="text-center mt-4">
 				<?php echo $nrt_ans;?>
 			</h3>
-
-
+ 
 		</div>
 		<script>
 			$(document).ready(function () {
@@ -446,7 +445,7 @@ $result = mysqli_query($db, $query);
 		<div
 			class="bg1 p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form method="post" id="i-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment(سرمایہ کاری)</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -513,7 +512,7 @@ $result = mysqli_query($db, $query);
 
 		<div class="bg1 p-2 mb-1 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 
-			<form method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+			<form method="post" id="in-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Income(آمدنی)</h3>
 				<?php include('errors.php'); ?>
 				<div class="row mt-4">
@@ -578,6 +577,9 @@ $result = mysqli_query($db, $query);
 
 </html>
 
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 <!-- ================================categories change jquery -->
 <script>
@@ -624,3 +626,205 @@ $result = mysqli_query($db, $query);
 	const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 	const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
+
+
+<!--==================== All Form Validations=================== -->
+<script>
+	$.validator.addMethod("noSpace",function(value,element){
+		return value == '' || value.trim().length != 0 
+	}, "Spaces are not allowed");
+
+      $('#e-form').validate({
+        rules: {
+            e_name: {
+				required:true,
+				noSpace: true
+			},
+            e_amount: {
+                required:true,
+				noSpace: true
+            },
+			
+            e_desc: {
+                required:true,
+				noSpace: true
+            }
+        },
+		messages: {
+            e_name: {
+				required:"username is required!"
+			},
+            e_amount: {
+                required: "amount is required!",
+            },
+			e_desc: {
+                required: "description is required!",
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+	$('#l-form').validate({
+        rules:{  
+            l_name: {
+				required:true,
+				noSpace: true
+			},
+            l_amount: {
+                required:true,
+				noSpace: true
+            },
+            l_desc: {
+                required:true,
+				noSpace: true
+            },
+            l_cdate: {
+                required:true,
+            },
+            l_rdate: {
+                required:true,
+            },
+		},
+		messages: {
+            l_name: {
+				required:"username is required!"
+			},
+            l_amount: {
+                required: "amount is required!",
+            },
+			l_desc: {
+                required: "description is required!",
+            },
+			l_cdate: {
+                required:"current date is required!",
+            },
+            l_rdate: {
+                required:"return date is required!"
+			}
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+	$('#b-form').validate({
+        rules:{  
+            b_name: {
+				required:true,
+				noSpace: true
+			},
+            b_amont: {
+                required:true,
+				noSpace: true
+            },
+            b_desc: {
+                required:true,
+				noSpace: true
+            },
+            b_cdate: {
+                required:true,
+            },
+            b_rdate: {
+                required:true,
+            },
+		},
+		messages: {
+            b_name: {
+				required:"username is required!"
+			},
+            b_amont: {
+                required: "amount is required!",
+            },
+			b_desc: {
+                required: "description is required!",
+            },
+			b_cdate: {
+                required:"current date is required!",
+            },
+            b_rdate: {
+                required:"return date is required!"
+			}
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+	$('#i-form').validate({
+        rules:{  
+            i_name: {
+				required:true,
+				noSpace: true
+			},
+            i_amont: {
+                required:true,
+				noSpace: true
+            },
+            i_desc: {
+                required:true,
+				noSpace: true
+            },
+            i_cdate: {
+                required:true,
+            }
+		},
+		messages: {
+            i_name: {
+				required:"username is required!"
+			},
+            i_amont: {
+                required: "amount is required!",
+            },
+			i_desc: {
+                required: "description is required!",
+            },
+			i_cdate: {
+                required:"current date is required!",
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+
+	$('#in-form').validate({
+        rules:{  
+            inc_name: {
+				required:true,
+				noSpace: true
+			},
+            inc_amont: {
+                required:true,
+				noSpace: true
+            },
+            inc_desc: {
+                required:true,
+				noSpace: true
+            },
+            inc_cdate: {
+                required:true,
+            }
+		},
+		messages: {
+            inc_name: {
+				required:"username is required!"
+			},
+            inc_amont: {
+                required: "amount is required!",
+            },
+			inc_desc: {
+                required: "description is required!",
+            },
+			inc_cdate: {
+                required:"current date is required!",
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>
+
+

@@ -4,10 +4,9 @@
     background-clip: none !important;
 }
 
-body {
-    background: #636464 !important;
-    background-repeat: no-repeat;
-
+.error {
+    color: red !important;
+    font-style: italic;
 }
 
 button,
