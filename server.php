@@ -80,13 +80,13 @@ if (isset($_POST['login_user'])) {
             array_push($errors, "Wrong username or password ");
         }
     }
-  }
+}
 
   error_reporting(0);
   $query = "SELECT u_id AS user_id FROM users where username ='".$_SESSION['username']."'";
   $result = mysqli_query($db, $query);
   while ($i = mysqli_fetch_assoc($result)) {
-    // $id_ans = "ID is: ".$i['user_id'];
+   
     $u_id = $i['user_id'];
   }
  
@@ -98,10 +98,6 @@ if (isset($_POST['expenses_data'])) {
       $e_name = mysqli_real_escape_string($db, $_POST['e_name']);
       $e_amount = mysqli_real_escape_string($db, $_POST['e_amount']);
       $e_desc = mysqli_real_escape_string($db, $_POST['e_desc']);
-      
-      // if (empty($e_name)) {array_push($errors, "Name is required");}
-      // if (empty($e_amount)) {array_push($errors, "Amount is required");}
-      // if (empty($e_desc)) {array_push($errors, "Description is required");}
         
       if (count($errors) == 0) {
         $q= "INSERT INTO expenses(u_id,e_name,e_amont,e_desc) 
@@ -116,7 +112,7 @@ if (isset($_POST['expenses_data'])) {
     while ($e = mysqli_fetch_assoc($result)) {
       $total_exp= $e['sum'] + 0;
       $e_ans = "Expenses Total Amount is: "."". $total_exp;
-  }
+}
 
 
   //============================= Submit Lender Data============================//
@@ -127,12 +123,7 @@ if (isset($_POST['lender_data'])) {
     $l_cdate = mysqli_real_escape_string($db, $_POST['l_cdate']);
     $l_rdate = mysqli_real_escape_string($db, $_POST['l_rdate']);
     
-    // if (empty($l_name)) {array_push($errors, "Name is required");}
-    // if (empty($l_amount)) {array_push($errors, "Amount is required");}
-    // if (empty($l_desc)) {array_push($errors, "Description is required");}
-    // if (empty($l_cdate)) {array_push($errors, "Current Date is required");}
-    // if (empty($l_rdate)) {array_push($errors, "Return Date is required");}
-      
+   
     if (count($errors) == 0) {
       $q= "INSERT INTO lender(u_id,l_name,l_amont,l_desc,l_cdate,l_rdate) 
       VALUES('$u_id','$l_name','$l_amount','$l_desc','$l_cdate','$l_rdate')";
@@ -160,7 +151,7 @@ if (isset($_GET['notreceive_del'])) {
   $l_id = $_GET['notreceive_del'];
   $sql ="INSERT INTO notreceived (u_id,nr_name,nr_amont,nr_desc,nr_cdate,nr_rdate) SELECT u_id,l_name,l_amont,l_desc,l_cdate,l_rdate FROM lender WHERE l_id = '$l_id';
   DELETE FROM lender WHERE `l_id`='$l_id'";
-// Execute the queries with multi_query
+
 if ($db->multi_query($sql) === TRUE) {
   // echo "Data inserted successfully";
 }
@@ -244,7 +235,7 @@ $nrt_query = "SELECT SUM(nrt_amount) AS sum FROM `notreturn` WHERE u_id = '$u_id
   while ($nrt = mysqli_fetch_assoc($result)) {
     $total_nrt= $nrt['sum'] + 0;
     $nrt_ans = "Borrower Total Not Received Amount is: "."". $total_nrt;
-  }
+}
 
 
   // submit data for investment
