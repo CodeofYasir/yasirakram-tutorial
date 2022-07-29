@@ -22,7 +22,7 @@
         $pdf->SetFont('Arial','',14);
         
         // $con = new PDO("mysql:host = localhost;dbname=khata","root","");
-        $con = new PDO("mysql:host = $cleardb_server;dbname=$cleardb_db","$cleardb_username","$cleardb_password");
+        // $con = new PDO("mysql:host = $cleardb_server;dbname=$cleardb_db","$cleardb_username","$cleardb_password");
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
         $result = $con->prepare($query);
