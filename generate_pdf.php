@@ -30,7 +30,8 @@
         $cleardb_server = $cleardb_url["host"];
         $cleardb_username = $cleardb_url["user"];
         $cleardb_password = $cleardb_url["pass"];
-        $con = new PDO("mysql:host = $cleardb_server;dbname= eu-cdbr-west-03.cleardb.net","$cleardb_username",$cleardb_password);
+        $cleardb_db = substr($cleardb_url["path"],1);
+        $con = new PDO("mysql:host = $cleardb_server;dbname= $cleardb_db","$cleardb_username",$cleardb_password);
 
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
