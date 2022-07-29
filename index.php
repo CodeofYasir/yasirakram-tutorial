@@ -22,19 +22,17 @@ $result = mysqli_query($db, $query);
 	<meta charset="utf-8">
 	<title>Manage Khata</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--Jquery  -->
-	 
+	<!-- Css  -->
 	<link rel="stylesheet" href="./css/style.css">
 	<!-- bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 	</script>
 
-	<!-- Data table -->
+	<!-- JQuery Data table -->
 	<script type="text/javascript" charset="utf8"
 		src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" charset="utf8"
@@ -42,7 +40,10 @@ $result = mysqli_query($db, $query);
 	<link rel="stylesheet" type="text/css"
 		href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
 
-
+<!-- JQuery validation -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 </head>
 
@@ -105,7 +106,11 @@ $result = mysqli_query($db, $query);
 
 		<div
 			class="p-2  bg1 mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+			<form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" id="pdf" name="generate_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+				</div>
+			</form>
 			<form id="e-form" method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<?php include('errors.php');?>
 				<h3 class="text-center">Expenses(اخراجات)</h3>
@@ -577,9 +582,6 @@ $result = mysqli_query($db, $query);
 
 </html>
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 <!-- ================================categories change jquery -->
 <script>
@@ -642,7 +644,8 @@ $result = mysqli_query($db, $query);
 			},
             e_amount: {
                 required:true,
-				noSpace: true
+				noSpace: true,
+				digits:true
             },
 			
             e_desc: {
@@ -656,6 +659,7 @@ $result = mysqli_query($db, $query);
 			},
             e_amount: {
                 required: "amount is required!",
+				digits:"Please enter only digits!"
             },
 			e_desc: {
                 required: "description is required!",
@@ -674,7 +678,8 @@ $result = mysqli_query($db, $query);
 			},
             l_amount: {
                 required:true,
-				noSpace: true
+				noSpace: true,
+				digits: true
             },
             l_desc: {
                 required:true,
@@ -693,6 +698,7 @@ $result = mysqli_query($db, $query);
 			},
             l_amount: {
                 required: "amount is required!",
+				digits:"Please enter only digits!"
             },
 			l_desc: {
                 required: "description is required!",
@@ -717,7 +723,8 @@ $result = mysqli_query($db, $query);
 			},
             b_amont: {
                 required:true,
-				noSpace: true
+				noSpace: true,
+				digits: true
             },
             b_desc: {
                 required:true,
@@ -736,6 +743,7 @@ $result = mysqli_query($db, $query);
 			},
             b_amont: {
                 required: "amount is required!",
+				digits:"Please enter only digits!"
             },
 			b_desc: {
                 required: "description is required!",
@@ -760,7 +768,8 @@ $result = mysqli_query($db, $query);
 			},
             i_amont: {
                 required:true,
-				noSpace: true
+				noSpace: true,
+				digits: true
             },
             i_desc: {
                 required:true,
@@ -776,6 +785,7 @@ $result = mysqli_query($db, $query);
 			},
             i_amont: {
                 required: "amount is required!",
+				digits:"Please enter only digits!"
             },
 			i_desc: {
                 required: "description is required!",
@@ -793,11 +803,12 @@ $result = mysqli_query($db, $query);
         rules:{  
             inc_name: {
 				required:true,
-				noSpace: true
+				noSpace: true,
 			},
             inc_amont: {
                 required:true,
-				noSpace: true
+				noSpace: true,
+				digits: true
             },
             inc_desc: {
                 required:true,
@@ -813,6 +824,7 @@ $result = mysqli_query($db, $query);
 			},
             inc_amont: {
                 required: "amount is required!",
+				digits:"Please enter only digits!"
             },
 			inc_desc: {
                 required: "description is required!",
