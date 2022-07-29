@@ -21,8 +21,18 @@
         // table rows
         $pdf->SetFont('Arial','',14);
         
-        // $con = new PDO("mysql:host = localhost;dbname=khata","root","");
-        $con = new PDO("mysql:host = host;dbname=heroku_42d68daddd4e2af","user","pass");
+        // $host="localhost";
+        // $password="";
+        // $dbname="khata";
+        // $user="root";
+        // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
+
+        $cleardb_server = $cleardb_url["host"];
+        $cleardb_username = $cleardb_url["user"];
+        $cleardb_password = $cleardb_url["pass"];
+        $dbname="heroku_42d68daddd4e2af";
+        $con = new PDO("mysql:host = $cleardb_server;dbname=$dbname","$cleardb_username","$cleardb_password");
+
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
         $result = $con->prepare($query);
