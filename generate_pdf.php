@@ -35,10 +35,10 @@
         $active_group = 'default';
         $query_builder = TRUE;
         // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
-        $pdf->Cell(40,10,$host,1,0,'C');
-        $pdf->Cell(40,10,$dbname,1,0,'C');
-        $pdf->Cell(40,10,$user,1,0,'C');
-        $pdf->Cell(40,10,$password,1,0,'C');
+        $pdf->Multicell(40,10,$host,1,0,'C');
+        $pdf->Multicell(40,10,$dbname,1,0,'C');
+        $pdf->Multicell(40,10,$user,1,0,'C');
+        $pdf->Multicell(40,10,$password,1,0,'C');
         
         
          
