@@ -37,7 +37,7 @@
 
         $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-        $con = new PDO("mysql:$cleardb_server;dbname:$cleardb_db",, $cleardb_username,$cleardb_password);
+        $con = new PDO("mysql:$cleardb_server;dbname:$cleardb_db",$cleardb_username,$cleardb_password);
 
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
