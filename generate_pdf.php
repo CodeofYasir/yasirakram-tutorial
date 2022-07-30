@@ -35,7 +35,7 @@
         // $active_group = 'default';
         // $query_builder = TRUE;
 
-        $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+        
 
         $con = new PDO("mysql:eu-cdbr-west-03.cleardb.net;dbname:heroku_42d68daddd4e2af","b699f891650808","4e255833");
 
