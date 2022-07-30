@@ -34,21 +34,23 @@
         $dbname = substr($cleardb_url["path"],1);
         $active_group = 'default';
         $query_builder = TRUE;
-        $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
-
-
-        $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
-        $result = $con->prepare($query);
-        $result->execute();
-        if($result)
-            $i=0;
-            while($row = $result->fetch())
-            {
-              $pdf->Cell(20,10,++$i,1,0,'C');
-              $pdf->Cell(40,10,$row['e_name'],1,0,'C');
-              $pdf->Cell(40,10,$row['e_amont'],1,0,'C');
-              $pdf->Cell(40,10,$row['e_desc'],1,1,'C');
-            }
+        // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
+        echo $host;
+        echo $dbname;
+        echo $user;
+        echo $password;
+        // $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
+        // $result = $con->prepare($query);
+        // $result->execute();
+        // if($result)
+        //     $i=0;
+        //     while($row = $result->fetch())
+        //     {
+        //       $pdf->Cell(20,10,++$i,1,0,'C');
+        //       $pdf->Cell(40,10,$row['e_name'],1,0,'C');
+        //       $pdf->Cell(40,10,$row['e_amont'],1,0,'C');
+        //       $pdf->Cell(40,10,$row['e_desc'],1,1,'C');
+        //     }
 
     
         $pdf->Output();
