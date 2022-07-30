@@ -4,6 +4,10 @@
     background-clip: none !important;
 }
 
+.bgall {
+    background: #5ba7fd !important;
+}
+
 .error {
     color: red !important;
     font-style: italic;
@@ -24,7 +28,6 @@ textarea,
 button {
     color: lightgray !important;
     background: #023774 !important;
-    padding-left: 0.5rem !important;
 }
 
 input::placeholder,

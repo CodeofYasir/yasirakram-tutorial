@@ -29,10 +29,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<!-- Css  -->
 	<link rel="stylesheet" href="./css/style.css">
+
+
 </head>
 
-<body>
-	<div class="size col-lg-10 col-md-10 col-12 m-auto p-1">
+<body class="bgall">
+	<div class="size bgall col-lg-10 col-md-10 col-12 m-auto p-1">
 		<!-- =============================header======================================= -->
 
 		<div
@@ -211,7 +213,7 @@
 						<?php echo $row['l_cdate']; ?>
 					</td>
 					<td class="p-0 m-0">
-						<?php echo $row['l_rdate']; ?>
+					<?php echo $row['l_rdate'];?>
 					</td>
 					<td class="p-0 m-0">
 						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
@@ -582,6 +584,7 @@
 			});
 		</script>
 	</div>
+	
 </body>
 </html>
 
@@ -601,6 +604,47 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
 
-<script src="./javascript.js" defer></script>
+<script src="./javascript/jscript.js" defer></script>
+<script src="./javascript/sweetalert.min.js"></script>
+
+<?php
+if(isset($_SESSION['status']) && $_SESSION['status'] !='')
+{
+	?>
+	<script>
+		swal({
+	  title: "<?php echo $_SESSION['status']; ?>",
+	//   text: "You clicked the button!",
+	  icon: "<?php $_SESSION['status_code']; ?>",
+	  button: "yes ok!",
+	}); 
+	</script>	
+	<?php
+	unset($_SESSION['status']);
+}
+?>
 
 
+
+
+
+
+<?php
+
+$results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); 
+for($i=0;$i<$row = mysqli_fetch_array($results);$i++)
+{
+  $date = $row['l_rdate'];
+  if(strtotime("today") == strtotime($date))
+  {
+	?>
+    
+	<?php  
+
+}if(strtotime("today") > strtotime($date))
+{
+}else{
+  echo $row['l_rdate'];
+  }				
+}
+?>					
