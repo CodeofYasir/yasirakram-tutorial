@@ -104,8 +104,9 @@ if (isset($_POST['expenses_data'])) {
         $q= "INSERT INTO expenses(u_id,e_name,e_amont,e_desc) 
         VALUES('$u_id','$e_name','$e_amount','$e_desc')";
         mysqli_query($db, $q);
-        $_SESSION['e_name'] = $e_name;
-        header('location: index.php');
+        $_SESSION["status"] = "Data uploaded successfully.";
+      $_SESSION["status_code"] = "success";
+      header('index.php');
       }
     } 
     $e_query = "SELECT SUM(e_amont) AS sum FROM `expenses` WHERE u_id = '$u_id'";
@@ -129,8 +130,9 @@ if (isset($_POST['lender_data'])) {
       $q= "INSERT INTO lender(u_id,l_name,l_amont,l_desc,l_cdate,l_rdate) 
       VALUES('$u_id','$l_name','$l_amount','$l_desc','$l_cdate','$l_rdate')";
       mysqli_query($db, $q);
-      $_SESSION['l_name'] = $l_name;
-      header('location: index.php');
+      $_SESSION["status"] = "Data uploaded successfully.";
+      $_SESSION["status_code"] = "success";
+      header('index.php');
     }
   } 
   
@@ -172,11 +174,11 @@ $nr_query = "SELECT SUM(nr_amont) AS sum FROM `notreceived` WHERE u_id = '$u_id'
   while ($nr = mysqli_fetch_assoc($result)) {
     $total_nr= $nr['sum'] + 0;
     $nr_ans = "Lender Total Not Received Amount is: "."". $total_nr;
-  }
+}
 
  //============================= submit data for borrow===============================//
 
-   if (isset($_POST['borrow_data'])) {
+if (isset($_POST['borrow_data'])) {
     $b_name = mysqli_real_escape_string($db, $_POST['b_name']);
     $b_amount = mysqli_real_escape_string($db, $_POST['b_amont']);
     $b_desc = mysqli_real_escape_string($db, $_POST['b_desc']);
@@ -193,8 +195,9 @@ $nr_query = "SELECT SUM(nr_amont) AS sum FROM `notreceived` WHERE u_id = '$u_id'
       $qu= "INSERT INTO borrow(u_id,b_name,b_amount,b_desc,b_cdate,b_rdate) 
       VALUES('$u_id','$b_name','$b_amount','$b_desc','$b_cdate','$b_rdate')";
       mysqli_query($db, $qu);
-      $_SESSION['b_name'] = $b_name;
-      header('location: index.php');
+      $_SESSION["status"] = "Data uploaded successfully.";
+      $_SESSION["status_code"] = "success";
+      header('index.php');
     }
   } 
   
@@ -258,8 +261,9 @@ $nrt_query = "SELECT SUM(nrt_amount) AS sum FROM `notreturn` WHERE u_id = '$u_id
         $qu= "INSERT INTO investment(u_id,i_name,i_amount,i_desc,i_cdate) 
         VALUES('$u_id','$i_name','$i_amount','$i_desc','$i_cdate')";
         mysqli_query($db, $qu);
-        $_SESSION['i_name'] = $i_name;
-        header('location: index.php');
+        $_SESSION["status"] = "Data uploaded successfully.";
+        $_SESSION["status_code"] = "success";
+        header('index.php');
       }
     } 
   $i_query = "SELECT SUM(i_amount) AS sum FROM `investment` WHERE u_id = '$u_id'";
@@ -290,8 +294,9 @@ if (isset($_POST['income_data'])) {
     $qu= "INSERT INTO income(u_id,inc_name,inc_amount,inc_desc,inc_cdate) 
     VALUES('$u_id','$inc_name','$inc_amount','$inc_desc','$inc_cdate')";
     mysqli_query($db, $qu);
-    $_SESSION['inc_name'] = $inc_name;
-    header('location: index.php');
+    $_SESSION["status"] = "Data uploaded successfully.";
+    $_SESSION["status_code"] = "success";
+    header('index.php');
   }
 }
 

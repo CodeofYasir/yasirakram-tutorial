@@ -7,8 +7,8 @@
 	    header('location: login.php');
     }
     if (isset($_GET['logout'])) {
-        session_destroy();
         unset($_SESSION['username']);
+        session_destroy();
         header("location: login.php");
     }
     $query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
@@ -607,7 +607,7 @@
 <script src="./javascript/jscript.js" defer></script>
 <script src="./javascript/sweetalert.min.js"></script>
 
-<!-- <?php
+<?php
 if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 {
 	?>
@@ -616,35 +616,11 @@ if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 	  title: "<?php echo $_SESSION['status']; ?>",
 	//   text: "You clicked the button!",
 	  icon: "<?php $_SESSION['status_code']; ?>",
-	  button: "yes ok!",
+	  button: "ok!",
 	}); 
 	</script>	
 	<?php
 	unset($_SESSION['status']);
 }
-?> -->
-
-
-
-
-
-
-<?php
-
-$results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); 
-for($i=0;$i<$row = mysqli_fetch_array($results);$i++)
-{
-  $date = $row['l_rdate'];
-  if(strtotime("today") == strtotime($date))
-  {
-	?>
-    
-	<?php  
-
-}if(strtotime("today") > strtotime($date))
-{
-}else{
-  echo $row['l_rdate'];
-  }				
-}
-?>					
+?>
+					
