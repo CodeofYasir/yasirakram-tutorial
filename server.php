@@ -2,18 +2,18 @@
 
 session_start();
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-$db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+// $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $cleardb_server = $cleardb_url["host"];
+// $cleardb_username = $cleardb_url["user"];
+// $cleardb_password = $cleardb_url["pass"];
+// $cleardb_db = substr($cleardb_url["path"],1);
+// $active_group = 'default';
+// $query_builder = TRUE;
+// $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 
 
-// $db = mysqli_connect('localhost', 'root', '', 'khata');
+$db = mysqli_connect('localhost', 'root', '', 'khata');
 
 
 $username = "";
@@ -31,7 +31,7 @@ if (isset($_POST['reg_user'])) {
 
   
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "passwords do not match");
   }
   
   // first check the database to make sure 
@@ -129,10 +129,8 @@ if (isset($_POST['lender_data'])) {
       $q= "INSERT INTO lender(u_id,l_name,l_amont,l_desc,l_cdate,l_rdate) 
       VALUES('$u_id','$l_name','$l_amount','$l_desc','$l_cdate','$l_rdate')";
       mysqli_query($db, $q);
-      $_SESSION["status"] = "Data uploaded successfully.";
-      $_SESSION["status_code"] = "success";
+      $_SESSION['l_name'] = $l_name;
       header('location: index.php');
-
     }
   } 
   
@@ -248,14 +246,6 @@ $nrt_query = "SELECT SUM(nrt_amount) AS sum FROM `notreturn` WHERE u_id = '$u_id
       $i_desc = mysqli_real_escape_string($db, $_POST['i_desc']);
       $i_cdate = mysqli_real_escape_string($db, $_POST['i_cdate']);
       
-      // if (empty($i_name)) {array_push($errors, "Name is required");}
-      // if (empty($i_amount)) {array_push($errors, "Amount is required");}
-      // if (empty($i_desc)) {array_push($errors, "Description is required");}
-      // if (empty($i_cdate)) {array_push($errors, "Current Date is required");}
-     
-     
-      
-     
       if (count($errors) == 0) {
         $qu= "INSERT INTO investment(u_id,i_name,i_amount,i_desc,i_cdate) 
         VALUES('$u_id','$i_name','$i_amount','$i_desc','$i_cdate')";
@@ -279,14 +269,7 @@ if (isset($_POST['income_data'])) {
   $inc_amount = mysqli_real_escape_string($db, $_POST['inc_amont']);
   $inc_desc = mysqli_real_escape_string($db, $_POST['inc_desc']);
   $inc_cdate = mysqli_real_escape_string($db, $_POST['inc_cdate']);
-  
-  // if (empty($inc_name)) {array_push($errors, "Name is required");}
-  // if (empty($inc_amount)) {array_push($errors, "Amount is required");}
-  // if (empty($inc_desc)) {array_push($errors, "Description is required");}
-  // if (empty($inc_cdate)) {array_push($errors, "Current Date is required");}
- 
- 
-  
+
  
   if (count($errors) == 0) {
     $qu= "INSERT INTO income(u_id,inc_name,inc_amount,inc_desc,inc_cdate) 
