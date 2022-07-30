@@ -108,7 +108,7 @@ $result = mysqli_query($db, $query);
 			class="p-2  bg1 mb-1 forms expenses-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
 			<form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<div class=" d-grid col-4 mx-auto">
-					<button type="submit" id="pdf" name="generate_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+					<button type="submit" name="e_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
 				</div>
 			</form>
 			<form id="e-form" method="post" action="index.php" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
@@ -166,9 +166,12 @@ $result = mysqli_query($db, $query);
 		<!-- ==============================Lender Data===================================== -->
 
 		<div class="p-2 bg1 mb-1 forms lender-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+		    <form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" name="l_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+				</div>
+			</form>
 			<form method="post" id="l-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
-				<?php include('errors.php');?>
 				<h3 class="text-center">To Lend(ادھار دینا)</h3>
 				<div class="row mt-4">
 					<div class="col">
@@ -303,7 +306,11 @@ $result = mysqli_query($db, $query);
 		<!-- ====================Borrower Data============================ -->
 
 		<div class="bg1 p-2 mb-1 forms borrow-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+		    <form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" name="b_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+				</div>
+			</form>
 			<form id="b-form" method="post" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Borrow(ادھار لینا)</h3>
 				<?php include('errors.php'); ?>
@@ -449,7 +456,11 @@ $result = mysqli_query($db, $query);
 		<!-- ====================Investment Data============================ -->
 		<div
 			class="bg1 p-2 mb-1 forms investment-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+			<form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" name="i_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+				</div>
+			</form>
 			<form method="post" id="i-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Investment(سرمایہ کاری)</h3>
 				<?php include('errors.php'); ?>
@@ -516,7 +527,11 @@ $result = mysqli_query($db, $query);
 
 
 		<div class="bg1 p-2 mb-1 forms income-form col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-1 m-auto overflow-hidden">
-
+		    <form action="generate_pdf.php" method="post" class=" mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
+				<div class=" d-grid col-4 mx-auto">
+					<button type="submit" name="inc_pdf" class="btn btn-dark m-auto mt-4">Generate PDF</button>
+				</div>
+			</form>
 			<form method="post" id="in-form" action="index.php" class="mt-4 col-lg-8 col-md-10 col-sm-11 col-xs-11 m-auto">
 				<h3 class="text-center">Income(آمدنی)</h3>
 				<?php include('errors.php'); ?>
