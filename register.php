@@ -15,7 +15,7 @@
 
 <body>
 
-	<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
+	<div class="bgall d-flex justify-content-center align-items-center" style="height:100vh;">
 
 		<form method="post" id="form" action="register.php"
 			class="forms bg1 col-lg-4 col-md-5 col-sm-8 col-10 rounded-3 pt-5 pb-5 px-3 py-3">
