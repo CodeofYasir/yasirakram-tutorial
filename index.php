@@ -607,7 +607,7 @@
 <script src="./javascript/jscript.js" defer></script>
 <script src="./javascript/sweetalert.min.js"></script>
 
-<?php
+<!-- <?php
 if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 {
 	?>
@@ -622,7 +622,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 	<?php
 	unset($_SESSION['status']);
 }
-?>
+?> -->
 
 
 

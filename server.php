@@ -18,7 +18,7 @@ $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cle
 
 $username = "";
 $email    = "";
-// $errors = array(); 
+$errors = array(); 
 
 
 // REGISTER USER
@@ -29,16 +29,11 @@ if (isset($_POST['reg_user'])) {
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
-  // $email_query  = "SELECT * FROM `users` WHERE  email='$email'";
-  // $email_query_run = mysqli_query($db,$email_query);
-
-  // if (mysqli_num_rows($email_query_run) > 0) {
-  //   $_SESSION['status'] = "Email Already Taken, Please Try Another One.";
-  //   $_SESSION['status_code'] = 'error';
-  //   header('location: login.php');
-  // }
-
-
+  
+  if ($password_1 != $password_2) {
+	array_push($errors, "The two passwords do not match");
+  }
+  
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM `users` WHERE  username='$username' OR email='$email' LIMIT 1";
@@ -47,21 +42,16 @@ if (isset($_POST['reg_user'])) {
    
   if ($user) { // if user exists
     if ($user['username'] === $username ) {
-      $_SESSION['status'] = "User Namee Already Taken, Please Try Another One.";
-    $_SESSION['status_code'] = "error";
-    header('location: login.php');
+      array_push($errors, "Username already exists");
     }
 
-    if ($user['email'] === $email) 
-    {
-    $_SESSION['status'] = "Email Already Taken, Please Try Another One.";
-    $_SESSION['status_code'] = "error";
-    header('location: login.php');
+    if ($user['email'] === $email) {
+      array_push($errors, "email already exists");
     }
   }
   
   // Finally, register user if there are no errors in the form
-  
+  if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO users (username, email, password) 
@@ -69,7 +59,7 @@ if (isset($_POST['reg_user'])) {
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	header('location: login.php');
-  
+  }
 }
  
 // LOGIN USER
@@ -317,18 +307,21 @@ while ($inc = mysqli_fetch_assoc($result)) {
 
 // $results = mysqli_query($db, "SELECT * FROM lender WHERE u_id = '$u_id'"); 
 // for($i=0;$i<$row = mysqli_fetch_array($results);$i++){
-//   $date = $row['l_rdate'];
-//   if(strtotime("today") == strtotime($date) || strtotime("today") > strtotime($date))
-//   {
-//     swal({
-//       title: "Good job!",
-//       text: "You clicked the button!",
-//       icon: "success",
-//     })
-//   }
-//   else{
-//   echo $row['l_rdate'];
-//   }				
 
 
+// $date = $row['l_rdate'];
+// // checking if the last date has arrived
+// if(strtotime("today") == strtotime($date)){
+// echo $row['l_rdate']."last day to return <br>";
+// }
+// // checking if the last date hasn’t arrived yet
+// else if(strtotime("today") > strtotime($date)){
+//   echo $row['l_rdate']." \t date is passsed  <br>";
+// }
+// // printing a message in case the last date has passed already
+// else{
+//   echo $row['l_rdate']."\t you have some days <br>";
+// }
+    
+// }
 ?>

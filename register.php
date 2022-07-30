@@ -38,6 +38,7 @@
 				<input type="password" name="password_2" id="password_2" class="form-control"
 					placeholder="Confirm Password">
 			</div>
+			<p class="text-center error"><?php include('errors.php'); ?></p>
 			<p class="text-center mt-2">
 				Already a member? <a href="login.php">Sign in</a>
 			</p>
