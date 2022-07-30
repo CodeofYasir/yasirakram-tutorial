@@ -27,30 +27,30 @@
         // $user="root";
         // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
 
-        // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        // $cleardb_server = $cleardb_url["host"];
-        // $cleardb_username = $cleardb_url["user"];
-        // $cleardb_password = $cleardb_url["pass"];
-        // $cleardb_db = substr($cleardb_url["path"],1);
-        // $active_group = 'default';
-        // $query_builder = TRUE;
+        $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $cleardb_server = $cleardb_url["host"];
+        $cleardb_username = $cleardb_url["user"];
+        $cleardb_password = $cleardb_url["pass"];
+        $cleardb_db = substr($cleardb_url["path"],1);
+        $active_group = 'default';
+        $query_builder = TRUE;
         
-        // $dns = "mysql:host=$cleardb_server;dbname= $cleardb_db";
-        // $con = new PDO($dns,$cleardb_username,$cleardb_password);
+        $dns = "mysql:host=$cleardb_server;dbname= $cleardb_db";
+        $con = new PDO($dns,$cleardb_username,$cleardb_password);
 
 
-        // $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
-        // $result = $con->prepare($query);
-        // $result->execute();
-        // if($result)
-        //     $i=0;
-        //     while($row = $result->fetch())
-        //     {
-        //       $pdf->Cell(20,10,++$i,1,0,'C');
-        //       $pdf->Cell(40,10,$row['e_name'],1,0,'C');
-        //       $pdf->Cell(40,10,$row['e_amont'],1,0,'C');
-        //       $pdf->Cell(40,10,$row['e_desc'],1,1,'C');
-        //     }
+        $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
+        $result = $con->prepare($query);
+        $result->execute();
+        if($result)
+            $i=0;
+            while($row = $result->fetch())
+            {
+              $pdf->Cell(20,10,++$i,1,0,'C');
+              $pdf->Cell(40,10,$row['e_name'],1,0,'C');
+              $pdf->Cell(40,10,$row['e_amont'],1,0,'C');
+              $pdf->Cell(40,10,$row['e_desc'],1,1,'C');
+            }
 
     
         $pdf->Output();
