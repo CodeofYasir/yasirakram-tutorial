@@ -35,10 +35,14 @@
         $active_group = 'default';
         $query_builder = TRUE;
         // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
-        echo $host;
-        echo $dbname;
-        echo $user;
-        echo $password;
+        $pdf->Cell(40,10,$host,1,0,'C');
+        $pdf->Cell(40,10,$dbname,1,0,'C');
+        $pdf->Cell(40,10,$user,1,0,'C');
+        $pdf->Cell(40,10,$password,1,0,'C');
+        
+        
+         
+         
         // $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
         // $result = $con->prepare($query);
         // $result->execute();
