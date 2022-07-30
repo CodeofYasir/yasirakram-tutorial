@@ -1,6 +1,5 @@
 <?php
-     require './lib/fpdf.php';
-     include 'conn.php';
+     require './lib/fpdf.php'; 
      include 'server.php';
     
      if(isset($_POST['e_pdf'])){
@@ -239,7 +238,5 @@
             }            
 
         $pdf->Output();
-    }
- 
-    
+    }    
 ?>
