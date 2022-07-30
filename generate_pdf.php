@@ -21,19 +21,11 @@
         // table rows
         $pdf->SetFont('Arial','',14);
         
-        // $host="localhost";
-        // $password="";
-        // $dbname="khata";
-        // $user="root";
-        // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
-
-    
-        $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
-        $result = $db->prepare($query);
-        $result->execute();
+        
+        $result = mysqli_query($db, "SELECT * FROM expenses WHERE u_id = '$u_id'");
         if($result)
             $i=0;
-            while($row = $result->fetch())
+            while($row = mysqli_fetch_array($result))
             {
               $pdf->Cell(20,10,++$i,1,0,'C');
               $pdf->Cell(40,10,$row['e_name'],1,0,'C');
