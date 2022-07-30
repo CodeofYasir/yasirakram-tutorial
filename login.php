@@ -27,9 +27,8 @@
 					<input type="password" id="password_1" name="password" placeholder="Password" class="form-control">
 					 
 				</div>
-				<p class="text-center error"><?php include('errors.php'); ?></p>
 				<p class="text-center mt-2">
-					Not yet a member? <a href="register.php">Sign up</a>
+					Not yet a member?<a href="register.php">Sign up</a>
 				</p>
 				<div class="form-wrapper ">
 					<div class=" d-grid col-4 mx-auto">
