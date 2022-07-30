@@ -27,20 +27,7 @@
         // $user="root";
         // $con = new PDO("mysql:host = $host;dbname=$dbname","$user",$password);
 
-        // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        // $cleardb_server = $cleardb_url["host"];
-        // $cleardb_username = $cleardb_url["user"];
-        // $cleardb_password = $cleardb_url["pass"];
-        // $cleardb_db = substr($cleardb_url["path"],1);
-        // $active_group = 'default';
-        // $query_builder = TRUE;
-
-        
-
-        // $con = new PDO("mysql:eu-cdbr-west-03.cleardb.net;dbname:heroku_42d68daddd4e2af","b699f891650808","4e255833");
-
-        $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
+    
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
         $result = $db->prepare($query);
         $result->execute();
