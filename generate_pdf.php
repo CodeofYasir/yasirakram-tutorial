@@ -37,11 +37,12 @@
 
         
 
-        $con = new PDO("mysql:eu-cdbr-west-03.cleardb.net;dbname:heroku_42d68daddd4e2af","b699f891650808","4e255833");
+        // $con = new PDO("mysql:eu-cdbr-west-03.cleardb.net;dbname:heroku_42d68daddd4e2af","b699f891650808","4e255833");
 
+        $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
         $query ="SELECT * FROM expenses WHERE u_id = '$u_id'";
-        $result = $con->prepare($query);
+        $result = $db->prepare($query);
         $result->execute();
         if($result)
             $i=0;
