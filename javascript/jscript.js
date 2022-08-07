@@ -37,6 +37,8 @@
 			$(".notreturn_table").css("display", "block");
 		});
 	});
+//========================= SweetAlert for submition of form data=====================
+
 
     
 	// const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')

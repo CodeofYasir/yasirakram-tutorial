@@ -13,7 +13,7 @@ $db = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cle
 
 
 
-// $db = mysqli_connect('localhost', 'root', '', 'khata');
+    // $db = mysqli_connect('localhost', 'root', '', 'khata');
 
 
 $username = "";
@@ -143,7 +143,7 @@ if (isset($_POST['lender_data'])) {
   if (isset($_GET['del'])) {
     $l_id = $_GET['del'];
     mysqli_query($db, "DELETE FROM lender WHERE `l_id`='$l_id'");
-    header('location: index.php');
+    header('location: index.php?m=1');
 }
 
 //====================Lender Amount receive or Amount Not Receive===========================

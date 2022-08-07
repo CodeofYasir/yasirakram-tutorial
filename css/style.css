@@ -4,10 +4,6 @@
     background-clip: none !important;
 }
 
-.bgall {
-    background: #5ba7fd !important;
-}
-
 .error {
     color: red !important;
     font-style: italic;

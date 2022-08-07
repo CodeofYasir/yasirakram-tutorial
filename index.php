@@ -8,8 +8,10 @@
     }
     if (isset($_GET['logout'])) {
         unset($_SESSION['username']);
-        session_destroy();
-        header("location: login.php");
+		 
+		session_destroy();
+		header('location: login.php');
+
     }
     $query = "SELECT * FROM lender WHERE u_id = '$u_id'";  
     $result = mysqli_query($db, $query);
@@ -111,7 +113,7 @@
 				<textarea name="e_desc" class="col-12 mt-4 p-1" id="desc" cols="10" rows="3"
 					placeholder="Description"></textarea>
 				<div class=" d-grid col-4 mx-auto">
-					<button type="submit" name="expenses_data" class="btn btn-dark mt-4">Submit</button>
+					<button type="submit" id="e_btn" name="expenses_data" class="btn btn-dark mt-4">Submit</button>
 				</div>
 			</form>
 
@@ -216,7 +218,7 @@
 					<?php echo $row['l_rdate'];?>
 					</td>
 					<td class="p-0 m-0">
-						<a class="text-decoration-none" href="server.php?del=<?php echo $row['l_id']; ?>">
+						<a class="text-decoration-none l_btn_del" href="server.php?del=<?php echo $row['l_id']; ?>">
 							<span class="badge text-bg-success">received</span>
 						</a>
 						<a class="text-decoration-none" href="server.php?notreceive_del=<?php echo $row['l_id']; ?>"
@@ -229,6 +231,9 @@
 				</tr>
 				<?php } ?>
 			</table>
+			<?php if(isset($_GET['m'])):?>
+				<div class="fash-data" data-flashdata="<?php $_GET['m']; ?>"></div>
+			<?php endif ;?>	
 			<h3 class="text-center mt-4">
 				<?php echo $l_ans;?>
 			</h3>
@@ -605,5 +610,23 @@
 
 
 <script src="./javascript/jscript.js" defer></script>
+<script src="./javascript/sweetalert.min.js"></script>
+<?php
 
-					
+if(isset($_SESSION["status"]) && $_SESSION["status"] !='')
+{
+    ?>
+    <script>
+swal("Are you sure?", {
+	text: "<?php echo $_SESSION['status']; ?>",
+  icon: "<?php $_SESSION['status_code']; ?>",
+  dangerMode: true,
+  buttons: true,
+  closeModal: false
+})
+    </script>	
+    <?php
+    unset($_SESSION['status']);
+}
+?>					
+ 
